@@ -19,23 +19,22 @@ import React from 'react'
     flex : 1,  alignItems: 'center'
   },
   textStatus :{
-    fontFamily: 'Inter',
-    fontWeight: 'bold',
+    fontFamily: 'NotoSansThai_Bold',
     fontSize: 20,
     color: '#000000',
     top: 140
   },
   text :{
-    fontFamily: 'Inter',
+    fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 16,
-    top: 180
+    top: 170
   },
   textKcal :{
-    fontFamily: 'Inter',
+    fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 20,
-    top: 200
+    top: 180
   },
   image :{
     top: 100,
