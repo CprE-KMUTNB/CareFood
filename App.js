@@ -1,47 +1,40 @@
-import React from 'react'
- import {View, Text,Image, StyleSheet} from 'react-native'
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
- const App = () => {
-  return(
-    <View style={styles.container}>
-      <Image source={{uri : 'https://randomuser.me/api/portraits/men/1.jpg'}} 
-        style={styles.image}
-      />
-      <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
-      <Text style={styles.text}>วันนี้ได้รับ</Text>
-      <Text style={styles.textKcal}>543 kcal</Text>
+
+function Feed() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Feed Screen</Text>
     </View>
-  )
- }
+  );
+}
 
- const styles = StyleSheet.create({
-  container : {
-    flex : 1,  alignItems: 'center'
-  },
-  textStatus :{
-    fontFamily: 'NotoSansThai_Bold',
-    fontSize: 20,
-    color: '#000000',
-    top: 140
-  },
-  text :{
-    fontFamily: 'NotoSansThai',
-    color: '#000000',
-    fontSize: 16,
-    top: 170
-  },
-  textKcal :{
-    fontFamily: 'NotoSansThai',
-    color: '#000000',
-    fontSize: 20,
-    top: 180
-  },
-  image :{
-    top: 100,
-    width: 100,
-    height: 100,
-    borderRadius : 100/2
-  }
- })
+function Article() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Article Screen</Text>
+    </View>
+  );
+}
 
- export default App;
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator useLegacyImplementation>
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Article" component={Article} />
+    </Drawer.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyDrawer />
+    </NavigationContainer>
+  );
+}
