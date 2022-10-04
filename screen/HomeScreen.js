@@ -1,6 +1,6 @@
 import React from 'react'
- import {View, Text,Image, StyleSheet} from 'react-native'
-import { Component } from 'react/cjs/react.production.min'
+import {View, Text,Image, StyleSheet} from 'react-native'
+
 
 const App = () => {
   return(
