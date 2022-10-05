@@ -1,48 +1,80 @@
 import React from 'react'
-import {View, Text,Image, StyleSheet} from 'react-native'
+import {View, Text,Image, StyleSheet,ScrollView} from 'react-native'
 
 
 const App = () => {
   return(
-    <View style={styles.container}>
-      <Image source={{uri : 'https://randomuser.me/api/portraits/men/1.jpg'}} 
-        style={styles.image}
-      />
-      <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
-      <Text style={styles.text}>วันนี้ได้รับ</Text>
-      <Text style={styles.textKcal}>543 kcal</Text>
+    <View style={[styles.container,{flexDirection: 'column'}]}>
+      <View style={[styles.box,{flexDirection: 'column'}]}>
+        <Image source={{uri : 'https://randomuser.me/api/portraits/men/1.jpg'}} 
+          style={styles.image}/>
+        <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
+        <Text style={styles.text}>วันนี้ได้รับ</Text>
+        <Text style={styles.textKcal}>543 kcal</Text>
+      </View>
+      <View style={styles.scroll}>
+      <ScrollView>
+        <Text style={styles.textScroll}>ipsamgfhsfgssghsfghsgfhshhhhhhhhhdhjdhj</Text>
+      </ScrollView>
+      </View>
     </View>
   )
  }
 
  const styles = StyleSheet.create({
   container : {
-    flex : 1,  alignItems: 'center'
+    flex : 1,  
+    alignItems: 'center',
+    backgroundColor:'white',
+  },
+  box:{
+    flex : 1.5,  
+    alignItems: 'center',
+    backgroundColor:'white',
+    marginTop: 20,
+    marginBottom: 10,
+    paddingTop: 30,
+    paddingBottom: 50
+  },
+  scroll:{
+    flex : 1,  
+    alignItems: 'center',
+    backgroundColor:'#F0E4E4',
+    marginTop: 5,
+    marginBottom: 40,
+    marginHorizontal: 80,
+    padding:20,
+    borderRadius : 5
   },
   textStatus :{
     fontFamily: 'NotoSansThai_Bold',
     fontSize: 20,
     color: '#000000',
-    top: 140
+    padding: 20
   },
   text :{
     fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 16,
-    top: 170
+    padding: 10
   },
   textKcal :{
     fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 20,
-    top: 180
+  },
+  textScroll:{
+    fontFamily: 'NotoSansThai',
+    color: '#000000',
+    fontSize: 16
   },
   image :{
-    top: 100,
     width: 100,
     height: 100,
-    borderRadius : 100/2
+    borderRadius : 50,
+    marginTop: 30,
+    marginBottom: 20
   }
- })
+ }) 
 
  export default App;
