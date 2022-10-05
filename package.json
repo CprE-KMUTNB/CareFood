@@ -1,30 +1,19 @@
 {
-  "name": "CareFood",
-  "version": "0.0.1",
-  "private": true,
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "DataTest.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "start": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "react": "17.0.2",
-    "react-native": "0.68.2",
-    "react-native-vector-icons": "^9.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/runtime": "^7.18.9",
-    "@react-native-community/eslint-config": "^3.1.0",
-    "babel-jest": "^28.1.3",
-    "eslint": "^8.22.0",
-    "jest": "^28.1.3",
-    "metro-react-native-babel-preset": "^0.72.0",
-    "react-test-renderer": "17.0.2"
-  },
-  "jest": {
-    "preset": "react-native"
+    "express": "^4.18.1",
+    "express-generator": "^4.16.1",
+    "mongoose": "^6.6.4",
+    "nodemon": "^2.0.20"
   }
 }
