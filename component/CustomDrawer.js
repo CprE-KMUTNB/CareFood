@@ -7,8 +7,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import Profile from '../screen/ProfileScreen';
-import SubDrawer from './SubDrawer';
+import ProfileScreen from '../screen/ProfileScreen';
 
 import Octicons from 'react-native-vector-icons/Octicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -18,7 +17,7 @@ const CustomDrawer = (props) => {
         <View style={{flex:1, backgroundColor: '#CBA2A2'}}>
             <DrawerContentScrollView {...props}>
                 <ImageBackground style={{padding: 20, marginTop: 60, marginLeft: 30, marginBottom: 20, marginRight: 50, alignItems:'center',}}>
-                    <ProfileScreen/>
+                    <Profile/>
                     <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10}}>ชื่อ นามสกุล</Text>
                 </ImageBackground>
                 <View style={{flex:1, paddingHorizontal: 40}}>
@@ -30,10 +29,22 @@ const CustomDrawer = (props) => {
     )
 }
 
-const ProfileScreen = ({navigation}) => {
+const Stack = createNativeStackNavigator();
+
+const Nav = () => {
+    return(
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen component={ProfileScreen} name='Profile'/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+
+const Profile = ({navigation}) => {
     return(
         <View>
-            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <TouchableOpacity onPress={() => navigation.return(ProfileScreen)}>
                 <Image source={require('../img/profile.png')} style={{height:60, width:60}}/>
             </TouchableOpacity>
         </View>
