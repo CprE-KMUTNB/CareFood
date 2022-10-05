@@ -1,5 +1,5 @@
 {
-  "name": "CareFood",
+  "name": "carefood",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "mongoose": "^6.6.4",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-vector-icons": "^9.2.0"
@@ -26,5 +27,18 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CprE-KMUTNB/CareFood.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CprE-KMUTNB/CareFood/issues"
+  },
+  "homepage": "https://github.com/CprE-KMUTNB/CareFood#readme"
 }
