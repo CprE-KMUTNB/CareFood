@@ -1,13 +1,18 @@
 var express = require('express');
+const data = require('../model/data');
 var router = express.Router();
-const Data = require('../model/data')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 router.post('/', function(req, res, next) {
-      console.log(req.body.name);
-      console.log(req.body.password);
+      userdb = new data({
+        username:req.body.name,
+        password:req.body.password
+      })
+      data.createDB(userdb,function(err){
+        if(err) console.log(err);
+      });
 });
 
 module.exports = router;

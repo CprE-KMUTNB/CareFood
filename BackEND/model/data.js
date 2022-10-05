@@ -21,3 +21,6 @@ const dbSchema =new Schema({
     }
 })
 const DATABASE = module.exports=mongoose.model("Database",dbSchema)
+module.exports.createDB=function(newDB,callback){
+    newDB.save(callback)
+}
