@@ -17,6 +17,8 @@ const AppStack = () => {
         <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} 
         initialRouteName="Home"
         screenOptions={{headerShown: true,
+            headerTitle: '',
+            headerTransparent:true,
             drawerActiveBackgroundColor: '#CBA2A2',
             drawerActiveTintColor: 'white',
             drawerInactiveTintColor: 'black',

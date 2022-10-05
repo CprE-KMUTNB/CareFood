@@ -14,7 +14,11 @@ const App = () => {
       </View>
       <View style={styles.scroll}>
       <ScrollView>
-        <Text style={styles.textScroll}>ipsamgfhsfgssghsfghsgfhshhhhhhhhhdhjdhj</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
+          <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>
+        </View>
+        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       </ScrollView>
       </View>
     </View>
@@ -38,13 +42,13 @@ const App = () => {
   },
   scroll:{
     flex : 1,  
-    alignItems: 'center',
     backgroundColor:'#F0E4E4',
     marginTop: 5,
     marginBottom: 40,
     marginHorizontal: 80,
     padding:20,
-    borderRadius : 5
+    borderRadius : 5,
+    width: 220
   },
   textStatus :{
     fontFamily: 'NotoSansThai_Bold',
