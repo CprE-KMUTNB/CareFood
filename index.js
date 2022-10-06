@@ -10,4 +10,4 @@ import HomeScreen from './screen/HomeScreen';
 import AppStack from './navbar/AppStack';
 import LoginScreen from './screen/LoginScreen'
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => LoginScreen);
