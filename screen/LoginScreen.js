@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
+import Octicons from 'react-native-vector-icons/Octicons';
 
 
-const LoginScreen =() =>{
+const LoginScreen = ({navigation}) => {
     return(
         <KeyboardAvoidingView style={styles.container}
          behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -14,11 +15,11 @@ const LoginScreen =() =>{
                     <Text style={[styles.textHeader,{marginBottom:30}]}>ล็อกอิน</Text>
                     <View style={styles.input}>
                         <TextInput placeholder="อีเมล์" 
-                        style={{fontFamily:'NotoSansThai', padding:10}}/>
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}/>
                     </View>
-                    <View style={styles.input}>
+                    <View style={[styles.input,{flexDirection:'row'}]}>
                         <TextInput placeholder="รหัสผ่าน" 
-                        style={{fontFamily:'NotoSansThai', padding:10}}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}
                         secureTextEntry={true}/>
                     </View>
                 </View>
@@ -49,7 +50,9 @@ const LoginScreen =() =>{
                         </View>
                     <View style={{flex:1, height: 1, backgroundColor: 'black'}} />
                 </View>
-                <Text style={[styles.textHeader, {marginTop:50}]}>สมัครบัญชี</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                    <Text style={[styles.textHeader, {marginTop:50}]}>สมัครบัญชี</Text>
+                </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
     )
@@ -68,9 +71,8 @@ const styles = StyleSheet.create({
     input:{
         backgroundColor:'#F0E4E4',
         width:247,
-        height:40,
+        height:45,
         borderRadius:10,
-        justifyContent:'center',
         margin:15
     },
     textHeader:{

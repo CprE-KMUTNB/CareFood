@@ -4,12 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import AppStack from './navbar/AppStack';
+import AuthStack from './navbar/AuthStack';
 
 
 function App()  {
   return (
     <NavigationContainer>
-      <AppStack />
+      <AuthStack/>
     </NavigationContainer>
   );
 }
