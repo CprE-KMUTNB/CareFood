@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity,TextInput} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,TextInput, KeyboardAvoidingView} from "react-native";
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -11,11 +11,11 @@ const ContactScreen = () => {
                 <Text style={styles.text}>ถึง : support@mail.com</Text>
             </View>
             <View style={{alignItems:'center'}}>
-            <View style={styles.boxInput}>
-                <TextInput placeholder='ป้อนข้อความของคุณตรงนี้' multiline={true}  style={styles.textInput}>
+            <KeyboardAvoidingView enabled behavior={Platform.OS === "ios" ? "padding" : null} style={styles.boxInput}>
+                <TextInput placeholder='ป้อนข้อความของคุณตรงนี้' multiline={true} numberOfLines={20} textAlignVertical={'top'} style={styles.textInput}>
 
                 </TextInput>
-            </View>
+            </KeyboardAvoidingView>
             </View>
             <View style={{flexDirection:'column', alignItems:'flex-end', marginRight:80, marginTop:40}}>
                 <View style={{alignItems:'center'}}>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     boxInput:{
         backgroundColor:'#F0E4E4',
         width:270, 
-        height:300,
+        height:310,
         borderRadius:20,
     },
     textInput:{

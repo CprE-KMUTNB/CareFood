@@ -7,10 +7,8 @@ const ProfileScreen = ({navigation}) => {
         <View style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>โปรไฟล์</Text>
             <View style={styles.container}>
-                <Image source={require('../img/profile.png')} style={{width:70, height:70, marginTop:20}}/>
-                <TouchableOpacity>
-                    <Image source={require('../img/edit.png')} style={{width:14, height:14, left:30, marginBottom:35}}/>
-                </TouchableOpacity>
+                <Image source={require('../img/profile.png')} style={{width:70, height:70, marginTop:20,marginBottom:49}}/>
+  
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
