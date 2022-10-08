@@ -1,9 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+<<<<<<< Updated upstream
 
 const LoginScreen =() =>{
+=======
+import Octicons from 'react-native-vector-icons/Octicons';
+import { AuthContext } from "../context/AuthContext";
+
+
+const LoginScreen = ({navigation}) => {
+    const {test} = useContext(AuthContext);
+
+>>>>>>> Stashed changes
     return(
         <KeyboardAvoidingView style={styles.container}
          behavior={Platform.OS == "ios" ? "padding" : "height"}
