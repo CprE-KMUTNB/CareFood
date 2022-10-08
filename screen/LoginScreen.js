@@ -14,7 +14,7 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.header}>
                     <Text style={[styles.textHeader,{marginBottom:30}]}>ล็อกอิน</Text>
                     <View style={styles.input}>
-                        <TextInput placeholder="อีเมล์" 
+                        <TextInput placeholder="ชื่อผู้ใช้" 
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}/>
                     </View>
                     <View style={[styles.input,{flexDirection:'row'}]}>

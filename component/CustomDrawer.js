@@ -29,22 +29,11 @@ const CustomDrawer = (props) => {
     )
 }
 
-const Stack = createNativeStackNavigator();
 
-const Nav = () => {
-    return(
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen component={ProfileScreen} name='Profile'/>
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
-}
-
-const Profile = ({navigation}) => {
+const Profile = (props) => {
     return(
         <View>
-            <TouchableOpacity onPress={() => navigation.return(ProfileScreen)}>
+            <TouchableOpacity onPress={() => this.props.navigate('Profile')}>
                 <Image source={require('../img/profile.png')} style={{height:60, width:60}}/>
             </TouchableOpacity>
         </View>

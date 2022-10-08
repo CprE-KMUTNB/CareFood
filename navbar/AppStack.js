@@ -2,7 +2,7 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawer from '../component/CustomDrawer';
 import Octicons from 'react-native-vector-icons/Octicons';
-import { NavigationContainer } from '@react-navigation/native';
+
 
 import HomeScreen from '../screen/HomeScreen';
 import ProfileScreen from '../screen/ProfileScreen';
@@ -10,6 +10,7 @@ import MenuScreen from '../screen/MenuScreen';
 import StatisticScreen from '../screen/StatisticScreen';
 import ContactScreen from '../screen/ContactScreen';
 import SettingScreen from '../screen/SettingScreen';
+import EditProfileScreen from '../screen/EditProfileScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -58,6 +59,10 @@ const AppStack = () => {
                     <Octicons name='gear' size={22} color={color}/>
                 )
             }} />
+            <Drawer.Screen name='EditProfile' component={EditProfileScreen} options={{
+                drawerItemStyle: { display: 'none' }
+            }}/>
+            
         </Drawer.Navigator>
     )
 }
