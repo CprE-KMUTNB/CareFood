@@ -8,19 +8,6 @@ mongoose.connect(dbUrl,{
     )
 const db = mongoose.connection
 const Schema = mongoose.Schema
-
-// const dbSchema =new Schema({
-//     id:{
-//         type:Schema.ObjectId
-//     },username:{
-//         type:String,
-//         require:true
-//     },
-//     password:{
-//         type:String,
-//         require:true
-//     }
-// })
 const dbSchema =new Schema({
     id:{
         type:Schema.ObjectId
@@ -58,6 +45,15 @@ module.exports.createDB=function(newDB,callback){
         newDB.save(callback);
         });
     });
+module.exports.getUserById=function(id,callback){
+        DATABASE.findById(id,callback);
+    }
+module.exports.getUserByName=function(name,callback){
+        var query={
+            Name:name
+        };
+        DATABASE.findOne(query,callback);
+    }
 }
 module.exports.getAllData=function(data){
     DATABASE.find(data)
