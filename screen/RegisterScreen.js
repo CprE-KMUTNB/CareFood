@@ -12,8 +12,8 @@ const RegisterScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>อีเมล์</Text>
-                    <View style={[styles.textInput,{left:32}]}>
+                    <Text style={styles.text}>ชื่อผู้ใช้</Text>
+                    <View style={[styles.textInput,{left:25}]}>
                         <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>

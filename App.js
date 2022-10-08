@@ -10,7 +10,7 @@ import AuthStack from './navbar/AuthStack';
 function App()  {
   return (
     <NavigationContainer>
-      <AppStack/>
+      <AuthStack/>
     </NavigationContainer>
   );
 }
