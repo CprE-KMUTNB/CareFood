@@ -2,6 +2,7 @@ var express = require('express');
 const data = require('../model/data');
 var router = express.Router();
 const{check,validationResult} = require("express-validator");
+var bcrypt = require("bcryptjs");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   data.getAllData(function(err,alldata){
