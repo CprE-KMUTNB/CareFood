@@ -45,8 +45,16 @@ module.exports.createDB=function(newDB,callback){
         newDB.save(callback);
         });
     });
+}
+
+
 module.exports.getUserById=function(id,callback){
         DATABASE.findById(id,callback);
+    }
+module.exports.comparePassword=function(password,hash,callback){
+        bcrypt.compare(password,hash,function(err,isMatch){
+            callback(null,isMatch);
+        });
     }
 module.exports.getUserByName=function(email,callback){
         var query={
@@ -54,7 +62,7 @@ module.exports.getUserByName=function(email,callback){
         };
         DATABASE.findOne(query,callback);
     }
-}
+
 module.exports.getAllData=function(data){
     DATABASE.find(data)
 }

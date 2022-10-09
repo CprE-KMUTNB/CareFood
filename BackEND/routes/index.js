@@ -102,10 +102,18 @@ passport.deserializeUser(function(id,done){
   });
 });
 
-passport.use(new localStrategy(function(email,password,done){
-  DATABASE.getUserByName(email,function(err,user){
+passport.use(new localStrategy(function(username,password,done){
+  DATABASE.getUserByName(username,function(err,user){
     if(err) throw error
-    console.log(user);
+    if(!user){
+      // ไม่พบผู้ใช้ในระบบ
+      return(done(null,false))
+    }else{
+      DATABASE.comparePassword(password,user.password,function(err,isMatch){
+        cancelIdleCallback(null,isMatch);
+      });
+      
+    }
   });
 }));
 
