@@ -5,13 +5,14 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import AppStack from './navbar/AppStack';
 import AuthStack from './navbar/AuthStack';
-
+import { AuthProvider } from './context/AuthContext';
+import AppNav from './navbar/AppNav';
 
 function App()  {
   return (
-    <NavigationContainer>
-      <AppStack/>
-    </NavigationContainer>
+    <AuthProvider>
+      <AppNav/>
+    </AuthProvider>
   );
 }
 

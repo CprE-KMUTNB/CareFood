@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
 
+import { AuthContext } from '../context/AuthContext';
 
 const SettingScreen = () => {
+    const {logout} = useContext(AuthContext);
+
     return(
         <View style={styles.container}>
             <Text style={styles.text}>ตั้งค่า</Text>
@@ -20,7 +23,7 @@ const SettingScreen = () => {
             </View>
             <View style={styles.box}>
                 <Text style={styles.text}>ออกจากระบบ</Text>
-                <TouchableOpacity onPress={() => {}} style={[styles.button,{marginLeft:25}]}>
+                <TouchableOpacity onPress={() => {logout()}} style={[styles.button,{marginLeft:25}]}>
                     <Text style={styles.text}>ตกลง</Text>
                 </TouchableOpacity>
             </View>

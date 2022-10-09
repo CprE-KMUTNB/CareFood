@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 
+import { AuthContext } from "../context/AuthContext";
 import Octicons from 'react-native-vector-icons/Octicons';
 
 
 const LoginScreen = ({navigation}) => {
+    const {login} = useContext(AuthContext);
     return(
         <KeyboardAvoidingView style={styles.container}
          behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -29,7 +31,7 @@ const LoginScreen = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {login()}} style={styles.button}>
                         <Text style={[styles.text, {textAlign:'center'}]}>เข้าสู่ระบบ</Text>
                     </TouchableOpacity>
                 </View>
