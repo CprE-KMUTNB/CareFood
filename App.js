@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import AppStack from './navbar/AppStack';
-import AuthStack from './navbar/AuthStack';
+import AppStack from './src/navbar/AppStack';
+import AuthStack from './src/navbar/AuthStack';
 import { AuthProvider } from './context/AuthContext';
-import AppNav from './navbar/AppNav';
+import AppNav from './src/navbar/AppNav';
 
 function App()  {
   return (
