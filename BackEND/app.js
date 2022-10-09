@@ -4,15 +4,31 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+app.get('*',function(req,res,next){
+  res.locals.user =req.user || null;
+  next();
+});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(session({
+  secret:"keyboard cat",
+  resave:false,
+  saveUninitialized:true,
+}))
+
+
 
 var bcrypt = require("bcryptjs");
 
 var passport = require("passport");
 var localStrategy = require("passport-local").Strategy;
+
+var session = require("express-session");
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

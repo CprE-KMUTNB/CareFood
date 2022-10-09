@@ -8,13 +8,20 @@ var passport=require("passport")
 var localStrategy=require("passport-local").Strategy
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',enSureAuthenticate, function(req, res, next) {
   data.getAllData(function(err,alldata){
     if(err) throw err
   res.render('index', { title: 'Express' ,alldata:alldata});
   });
 });
 
+function enSureAuthenticate(req,res,next){
+  if(req.isAuthenticated()){
+    return next();
+  }else{
+    res.redirect("/login");
+  }
+}
 // router.post('/', function(req, res, next) {
 //       userdb = new data({
 //         username:req.body.name,
@@ -90,7 +97,7 @@ router.post("/login",passport.authenticate("local",{
   failureRedirect:"/login",
   failureFlash:false
 }),function(req,res,next){
-  res.redirect("/Homescreen");
+  res.redirect("/");
 });
 
 passport.serializeUser(function(db,done){
