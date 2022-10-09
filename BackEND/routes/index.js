@@ -93,6 +93,10 @@ router.post("/register",[
 router.get("/login",function(req,res,next){
   res.render("login");
 });
+router.get("/logout",function(req,res,next){
+  req.logout();
+  res.redirect('/login');
+});
 router.post("/login",passport.authenticate("local",{
   failureRedirect:"/login",
   failureFlash:false
