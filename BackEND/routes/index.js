@@ -99,8 +99,9 @@ router.get("/logout",function(req,res,next){
 });
 router.post("/login",passport.authenticate("local",{
   failureRedirect:"/login",
-  failureFlash:false
+  failureFlash:true
 }),function(req,res,next){
+  req.flash("success","ลงชื่อเข้าใช้เรียบร้อย");
   res.redirect("/");
 });
 
