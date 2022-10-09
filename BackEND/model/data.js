@@ -48,9 +48,9 @@ module.exports.createDB=function(newDB,callback){
 module.exports.getUserById=function(id,callback){
         DATABASE.findById(id,callback);
     }
-module.exports.getUserByName=function(name,callback){
+module.exports.getUserByName=function(email,callback){
         var query={
-            Name:name
+            Email:email
         };
         DATABASE.findOne(query,callback);
     }

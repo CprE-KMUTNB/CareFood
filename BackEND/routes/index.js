@@ -3,6 +3,10 @@ const data = require('../model/data');
 var router = express.Router();
 const{check,validationResult} = require("express-validator");
 var bcrypt = require("bcryptjs");
+
+var passport=require("passport")
+var localStrategy=require("passport-local").Strategy
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   data.getAllData(function(err,alldata){
@@ -10,16 +14,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' ,alldata:alldata});
   });
 });
-router.post('/', function(req, res, next) {
-      userdb = new data({
-        username:req.body.name,
-        password:req.body.password
-      })
-      data.createDB(userdb,function(err){
-        if(err) console.log(err);
-        res.redirect("/")
-      });
-});
+// router.post('/', function(req, res, next) {
+//       userdb = new data({
+//         username:req.body.name,
+//         password:req.body.password
+//       })
+//       data.createDB(userdb,function(err){
+//         if(err) console.log(err);
+//         res.redirect("/")
+//       });
+// });
 // Register
 // router.post('/register',[
 //   check("email","กรุณาป้อนอีเมล").isEmail(),
@@ -81,9 +85,30 @@ router.post("/register",[
 router.get("/login",function(req,res,next){
   res.render("login");
 });
-router.post("/login",function(req,res,next){
-  
+router.post("/login",passport.authenticate("local",{
+  failureRedirect:"/login",
+  failureFlash:false
+}),function(req,res,next){
+  res.redirect("/Homescreen");
 });
+
+passport.serializeUser(function(db,done){
+  done(null,db.id)
+});
+
+passport.deserializeUser(function(id,done){
+  DATABASE.getUserById(id,function(err,user){
+    done(err,user);
+  });
+});
+
+passport.use(new localStrategy(function(email,password,done){
+  DATABASE.getUserByName(email,function(err,user){
+    if(err) throw error
+    console.log(user);
+  });
+}));
+
 
 module.exports = router;
 
