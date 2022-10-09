@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import AppStack from './AppStack';
 import AuthStack from './AuthStack';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../context/AuthContext'; 
 
 const AppNav = () => {
   const {isLoading, userToken} = useContext(AuthContext);
