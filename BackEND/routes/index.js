@@ -14,6 +14,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' ,alldata:alldata});
   });
 });
+
 // router.post('/', function(req, res, next) {
 //       userdb = new data({
 //         username:req.body.name,
@@ -107,12 +108,18 @@ passport.use(new localStrategy(function(username,password,done){
     if(err) throw error
     if(!user){
       // ไม่พบผู้ใช้ในระบบ
-      return(done(null,false))
+      return done(null,false)
     }else{
-      DATABASE.comparePassword(password,user.password,function(err,isMatch){
-        cancelIdleCallback(null,isMatch);
-      });
-      
+      return done(null,user)
+    }
+  });
+  DATABASE.comparePassword(password,user.password,function(err,user,isMatch){
+    if(err) throw error
+    console.log(isMatch)
+    if(isMatch){
+      return done(bull,user)
+    }else{
+      return done(null,false)
     }
   });
 }));
