@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
-import RadioButton from "../component/RadioButton";
+import RadioButton  from "../component/RadioButton";
 
 const RegisterScreen = ({navigation}) => {
     return(
@@ -37,10 +37,9 @@ const RegisterScreen = ({navigation}) => {
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>เพศ</Text>
-                    <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-
+                    <View style={{marginLeft:45,  marginVertical: 5}}>
+                        <RadioButton/>
                     </View>
-                    <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>

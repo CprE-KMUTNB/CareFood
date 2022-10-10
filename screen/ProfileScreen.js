@@ -24,10 +24,9 @@ const ProfileScreen = ({navigation}) => {
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>เพศ</Text>
-                    <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-
-                    </View>
-                    <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
+                    <View style={{marginLeft:45,  marginVertical: 5}}>
+                        <RadioButton/>
+                    </View>  
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
