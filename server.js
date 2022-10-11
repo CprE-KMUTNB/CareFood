@@ -3,6 +3,7 @@ const express = require('express')
 const register = require("./routes/RegisterRoute")
 const test = require("./routes/TestRoute")
 const login = require("./routes/LoginRoute")
+const search = require("./routes/SearchRoute")
 
 require("dotenv").config()
 
@@ -29,3 +30,4 @@ app.use(express.json())
 app.use('/api',test)
 app.use('/api',register)
 app.use('/api',login)
+app.use('/api',search)
