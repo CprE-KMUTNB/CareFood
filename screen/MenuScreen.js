@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView} from "
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
-const MenuScreen = () => {
+const MenuScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
             <Text style={styles.text}>เมนูอาหาร</Text>
@@ -13,7 +13,7 @@ const MenuScreen = () => {
             </View>
             <View style={styles.scroll}>
             <ScrollView>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Menu_1')}>
                     <View style={{flexDirection:'row', marginHorizontal:10}}>
                     <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>

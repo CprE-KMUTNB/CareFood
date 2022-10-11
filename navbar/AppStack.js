@@ -11,6 +11,7 @@ import StatisticScreen from '../screen/StatisticScreen';
 import ContactScreen from '../screen/ContactScreen';
 import SettingScreen from '../screen/SettingScreen';
 import EditProfileScreen from '../screen/EditProfileScreen';
+import Menu_1 from '../screen/Menu_1';
 
 const Drawer = createDrawerNavigator();
 
@@ -61,6 +62,9 @@ const AppStack = () => {
                 )
             }} />
             <Drawer.Screen name='EditProfile' component={EditProfileScreen} options={{
+                drawerItemStyle: { display: 'none' }
+            }}/>
+            <Drawer.Screen name='Menu_1' component={Menu_1} options={{
                 drawerItemStyle: { display: 'none' }
             }}/>
             
