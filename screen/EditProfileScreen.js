@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import RadioButton from "../component/RadioButton";
 
 
@@ -34,21 +34,21 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>

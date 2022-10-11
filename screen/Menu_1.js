@@ -8,7 +8,8 @@ import MenuCheck from '../component/MenuCheck';
 const Menu_1 = () => {
     return(
         <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? 'height' : 'position'} style={styles.container}>
+        behavior={Platform.OS === "ios" ? 'height' : 'position'} 
+        style={styles.container}>
             <Text style={styles.text}>ข้าวผัดหมู</Text>
             <View style={{alignItems:'center'}}>
                 <Image style={styles.image} source={require('../menu/pork_fried_rice.jpg')}/>
