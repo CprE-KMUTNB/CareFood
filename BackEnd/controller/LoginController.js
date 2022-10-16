@@ -13,7 +13,7 @@ exports.login=(req,res)=>{
                     return res.status(400).json({error:"This password doesn't match"})
                 }else{
                  const token = sign({userid:userinfo._id},process.env.TOKENSECRET)
-                 return res.status(200).json({token})
+                 return res.status(200).json({token:token,userinfo})
                 }
             })
         }

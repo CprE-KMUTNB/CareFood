@@ -3,17 +3,32 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext();
 
+import axios from "axios";
+
+const baseUrl = "http://10.0.2.2:5500"
+
 export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
+    const [userInfo, setUserInfo] = useState(null);
 
-    const login = () =>{
+    const login = (name,password) =>{
         setIsLoading(true);
-        setUserToken('abcd');
-        AsyncStorage.setItem('userToken', 'abcd');
+        axios.post(`${baseUrl}/api/login`,{
+            name,password
+        })
+        .then(res=>{
+            console.log(res.data.token);
+            console.log(res.data);
+            setUserToken(res.data.token);
+            setUserInfo(res.data.userinfo);
+        })
+        .catch(err=>{
+            console.log(err);
+        });
         setIsLoading(false);
-    }
-    
+        
+        }
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);

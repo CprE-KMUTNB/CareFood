@@ -3,11 +3,14 @@ const express = require('express')
 const register = require("./routes/RegisterRoute")
 const test = require("./routes/TestRoute")
 const login = require("./routes/LoginRoute")
-const search = require("./routes/SearchRoute")
+// const search = require("./routes/SearchRoute")
 
 require("dotenv").config()
 
 const app = express()
+
+var cors = require('cors');
+app.use(cors());
 
 // Connect DB
 mongoose.connect(process.env.DATABASE,{
@@ -30,4 +33,4 @@ app.use(express.json())
 app.use('/api',test)
 app.use('/api',register)
 app.use('/api',login)
-app.use('/api',search)
+// app.use('/api',search)
