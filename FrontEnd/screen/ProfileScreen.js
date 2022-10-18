@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
 import RadioButton from "../component/RadioButton";
 
+import { AuthContext } from "../context/AuthContext";
+
 const ProfileScreen = ({navigation}) => {
+    const {userInfo} = useContext(AuthContext);
+
     return(
         <View style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>โปรไฟล์</Text>
@@ -13,7 +17,7 @@ const ProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput value="Ab" editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={userInfo.name} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>

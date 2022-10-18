@@ -9,8 +9,8 @@ const baseUrl = "http://10.0.2.2:5500"
 
 export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [userToken, setUserToken] = useState(null);
-    const [userInfo, setUserInfo] = useState(null);
+    const [userToken, setUserToken] = useState([]);
+    const [userInfo, setUserInfo] = useState([]);
 
     const login = (name,password) =>{
         setIsLoading(true);
@@ -53,7 +53,7 @@ export const AuthProvider = ({children}) => {
     }, [])
 
     return(
-        <AuthContext.Provider value={{login, logout, isLoading, userToken}}>
+        <AuthContext.Provider value={{login, logout, isLoading, userToken, userInfo}}>
             {children}
         </AuthContext.Provider>
     )
