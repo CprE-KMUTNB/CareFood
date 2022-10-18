@@ -5,9 +5,22 @@ import { AuthContext } from "../context/AuthContext";
 import Octicons from 'react-native-vector-icons/Octicons';
 
 const LoginScreen = ({navigation}) => {
-    const [username,setUserName] = useState(null);
-    const [password,setPassword] = useState(null);
+    const [username,setUserName] = useState('');
+    const [password,setPassword] = useState('');
     const {login} = useContext(AuthContext);
+
+    const checkTextInput = () => {
+        if (!username.trim()) {
+          alert('กรุณากรอกชื่อผู้ใช้');
+          return;
+        }
+        if (!password.trim()) {
+          alert('กรุณากรอกรหัสผ่าน');
+          return;
+        }
+
+      }
+
     return(
         <KeyboardAvoidingView style={styles.container}
          behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -32,7 +45,7 @@ const LoginScreen = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {login(username,password)}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {checkTextInput(); login(username,password)}} style={styles.button}>
                         <Text style={[styles.text, {textAlign:'center'}]}>เข้าสู่ระบบ</Text>
                     </TouchableOpacity>
                 </View>

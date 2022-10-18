@@ -6,12 +6,24 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { AuthContext } from "../context/AuthContext";
 
 const RegisterScreen = ({navigation}) => {
-    const [username,setUserName] = useState(null);
-    const [password,setPassWord] = useState(null);
-    const [age,setAge] = useState(null);
-    const [height,setHeight] = useState(null);
-    const [weight,setWeight] = useState(null);
+    const [username,setUserName] = useState('');
+    const [password,setPassWord] = useState('');
+    const [age,setAge] = useState('');
+    const [height,setHeight] = useState('');
+    const [weight,setWeight] = useState('');
     const {register} = useContext(AuthContext);
+
+    const checkTextInput = () => {
+        if (!username.trim()) {
+          alert('กรุณากรอกชื่อผู้ใช้');
+          return;
+        }
+        if (!password.trim()) {
+          alert('กรุณากรอกรหัสผ่าน');
+          return;
+        }
+        alert('สมัครบัญชีสำเร็จ');
+      }
 
     return(
         <KeyboardAwareScrollView style={{flex:1}}>
@@ -78,7 +90,7 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {register(username, password, age, height, weight); navigation.goBack()}} style={styles.button}>
+                <TouchableOpacity onPress={() => {checkTextInput();register(username, password, age, height, weight); navigation.goBack()}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>
