@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import RadioButton from "../component/RadioButton";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+import { AuthContext } from "../context/AuthContext";
 
 const EditProfileScreen = ({navigation}) => {
+    const {userInfo} = useContext(AuthContext);
     return(
-        <View style={{flex:1, marginTop:50}}>
+        <KeyboardAwareScrollView style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>แก้ไขโปรไฟล์</Text>
             <View style={styles.container}>
                 <Image source={require('../img/profile.png')} style={{width:70, height:70, marginTop:20}}/>
@@ -16,7 +19,7 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={userInfo.name} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -57,7 +60,7 @@ const EditProfileScreen = ({navigation}) => {
                             <Text style={[styles.text, {textAlign:'center'}]}>บันทึก</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 

@@ -1,6 +1,7 @@
 import React,{useContext, useState}  from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
 import RadioButton  from "../component/RadioButton";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -13,7 +14,7 @@ const RegisterScreen = ({navigation}) => {
     const {register} = useContext(AuthContext);
 
     return(
-        <View style={{flex:1}}>
+        <KeyboardAwareScrollView style={{flex:1}}>
             <View style={styles.container}>
                 <Image source={require('../img/profile.png')} style={{width:70, height:70, marginTop:45}}/>
                 <TouchableOpacity>
@@ -77,11 +78,11 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {register(username, password, age, height, weight)}} style={styles.button}>
+                <TouchableOpacity onPress={() => {register(username, password, age, height, weight); navigation.goBack()}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 

@@ -1,21 +1,22 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity,TextInput, KeyboardAvoidingView} from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const ContactScreen = () => {
     return(
-        <View style={styles.container}>
+        <KeyboardAwareScrollView style={styles.container}>
             <Text style={styles.text}>ติดต่อ</Text>
             <View style={[styles.box,{marginTop:60,}]}>
                 <Text style={styles.text}>ถึง : support@mail.com</Text>
             </View>
             <View style={{alignItems:'center'}}>
-            <KeyboardAvoidingView enabled behavior={Platform.OS === "ios" ? "padding" : null} style={styles.boxInput}>
+            <View style={styles.boxInput}>
                 <TextInput placeholder='ป้อนข้อความของคุณตรงนี้' multiline={true} numberOfLines={20} textAlignVertical={'top'} style={styles.textInput}>
 
                 </TextInput>
-            </KeyboardAvoidingView>
+            </View>
             </View>
             <View style={{flexDirection:'column', alignItems:'flex-end', marginRight:80, marginTop:40}}>
                 <View style={{alignItems:'center'}}>
@@ -25,7 +26,7 @@ const ContactScreen = () => {
                     <Text style={styles.text}>ส่งข้อความ</Text>
                 </View>
             </View>
-        </View>
+        </KeyboardAwareScrollView>
     )
 }
 
