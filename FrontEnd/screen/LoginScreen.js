@@ -4,17 +4,8 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvo
 import { AuthContext } from "../context/AuthContext";
 import Octicons from 'react-native-vector-icons/Octicons';
 
-// import axios from "axios";
-
-// const loginUrl = "https://localhost:5500/api/login"
-
-// const login = ()=>{
-//     axios
-//     .post(loginUrl,)
-// }
-
 const LoginScreen = ({navigation}) => {
-    const [name,setName] = useState(null);
+    const [username,setUserName] = useState(null);
     const [password,setPassword] = useState(null);
     const {login} = useContext(AuthContext);
     return(
@@ -26,7 +17,7 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.header}>
                     <Text style={[styles.textHeader,{marginBottom:30}]}>ล็อกอิน</Text>
                     <View style={styles.input}>
-                        <TextInput placeholder="ชื่อผู้ใช้" value={name} onChangeText={text=>setName(text)}
+                        <TextInput placeholder="ชื่อผู้ใช้" value={username} onChangeText={text=>setUserName(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}/>
                     </View>
                     <View style={[styles.input,{flexDirection:'row'}]}>
@@ -41,7 +32,7 @@ const LoginScreen = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {login(name,password)}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {login(username,password)}} style={styles.button}>
                         <Text style={[styles.text, {textAlign:'center'}]}>เข้าสู่ระบบ</Text>
                     </TouchableOpacity>
                 </View>

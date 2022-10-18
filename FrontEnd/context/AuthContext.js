@@ -27,8 +27,16 @@ export const AuthProvider = ({children}) => {
             console.log(err);
         });
         setIsLoading(false);
-        
         }
+
+    const register = (name, password, age, height, weight) =>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/register`,{
+            name, password, age, height, weight
+        })
+
+    }
+
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
