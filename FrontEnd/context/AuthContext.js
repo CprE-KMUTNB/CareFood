@@ -27,14 +27,20 @@ export const AuthProvider = ({children}) => {
             console.log(err);
         });
         setIsLoading(false);
-        }
+    }
 
     const register = (name, password, age, height, weight) =>{
         setIsLoading(true);
         axios.post(`${baseUrl}/api/register`,{
             name, password, age, height, weight
         })
-
+        .then(res=>{
+            console.log(res.data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
     }
 
     const logout = () => {
@@ -61,7 +67,7 @@ export const AuthProvider = ({children}) => {
     }, [])
 
     return(
-        <AuthContext.Provider value={{login, logout, isLoading, userToken, userInfo}}>
+        <AuthContext.Provider value={{login, logout, register, isLoading, userToken, userInfo}}>
             {children}
         </AuthContext.Provider>
     )

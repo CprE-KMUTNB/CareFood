@@ -1,8 +1,17 @@
-import React from "react";
+import React,{useContext, useState}  from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
 import RadioButton  from "../component/RadioButton";
 
+import { AuthContext } from "../context/AuthContext";
+
 const RegisterScreen = ({navigation}) => {
+    const [username,setUserName] = useState(null);
+    const [password,setPassWord] = useState(null);
+    const [age,setAge] = useState(null);
+    const [height,setHeight] = useState(null);
+    const [weight,setWeight] = useState(null);
+    const {register} = useContext(AuthContext);
+
     return(
         <View style={{flex:1}}>
             <View style={styles.container}>
@@ -14,13 +23,15 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อผู้ใช้</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={username} onChangeText={text=>setUserName(text)} 
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>รหัสผ่าน</Text>
                     <View style={[styles.textInput,{left:14}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={password} onChangeText={text=>setPassWord(text)}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -44,26 +55,29 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={age} onChangeText={text=>setAge(text)}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={height} onChangeText={text=>setHeight(text)}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={weight} onChangeText={text=>setWeight(text)}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.button}>
+                <TouchableOpacity onPress={() => {register(username, password, age, height, weight)}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>
