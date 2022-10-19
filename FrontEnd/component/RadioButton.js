@@ -4,17 +4,17 @@ import RadioForm, { RadioButtonLabel } from 'react-native-simple-radio-button';
 
 
 const RadioButton = () => {
-  const [chosenOption, setChosenOption] = useState(null); //will store our current user options
+  const [chosenOption, setChosenOption] = useState(null); 
   const options = [
     { label: 'ผู้ชาย', value: 'male' },
     { label: 'ผู้หญิง', value: 'female' },
-  ]; //create our options for radio group
+  ]; 
   return (
     <View>
       <RadioForm
         radio_props={options}
         formHorizontal={true}
-        initial={0} //initial value of this group
+        initial={0} 
         buttonColor={'#D9D9D9'}
         selectedButtonColor={'#D9D9D9'}
         labelStyle={{fontFamily:'NotoSansThai', paddingHorizontal:15}}
