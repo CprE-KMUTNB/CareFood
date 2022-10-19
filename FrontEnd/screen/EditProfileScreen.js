@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import RadioButton from "../component/RadioButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -7,6 +7,13 @@ import { AuthContext } from "../context/AuthContext";
 
 const EditProfileScreen = ({navigation}) => {
     const {userInfo} = useContext(AuthContext);
+    const [realname,setRealName] = useState('');
+    const [surname,setSurName] = useState('');
+    const [gender,setGenDer] = useState('');
+    const [age,setAge] = useState('');
+    const [height,setHeight] = useState('');
+    const [weight,setWeight] = useState('');
+    const {edit} = useContext(AuthContext);
     return(
         <KeyboardAwareScrollView style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>แก้ไขโปรไฟล์</Text>
@@ -19,13 +26,13 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput value={userInfo.name} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput  value = {realname} onChangeText={text=>setRealName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>นามสกุล</Text>
                     <View style={[styles.textInput,{left:15}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput  value = {surname} onChangeText={text=>setSurName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -37,26 +44,26 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput value={age} onChangeText={text=>setAge(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput value={height} onChangeText={text=>setHeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput value={weight} onChangeText={text=>setWeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => navigation.navigate('Profile')} style={styles.button}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Profile');edit(realname,surname,age,height,weight)}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>บันทึก</Text>
                 </TouchableOpacity>
             </View>

@@ -11,6 +11,9 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState([]);
     const [userInfo, setUserInfo] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${userToken}` }
+    };
 
     const login = (name,password) =>{
         setIsLoading(true);
@@ -29,10 +32,10 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false);
     }
 
-    const register = (name, password, age, height, weight) =>{
+    const register = (name, password,realname,surname, age, weight, height) =>{
         setIsLoading(true);
         axios.post(`${baseUrl}/api/register`,{
-            name, password, age, height, weight
+        name, password,realname,surname,age, weight, height
         })
         .then(res=>{
             console.log(res.data);
@@ -61,13 +64,26 @@ export const AuthProvider = ({children}) => {
             console.log('isLogged in error ${e}');
         }
     }
+    const edit = (realname,surname,age,height,weight)=>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/edit`,{
+            userToken,realname, surname, age, height, weight}
+        ).then(res=>{
+            console.log("เเก้ไขสำเร็จ");
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
+    }
 
     useEffect(() => {
         isLoggedIn();
     }, [])
+    
 
     return(
-        <AuthContext.Provider value={{login, logout, register, isLoading, userToken, userInfo}}>
+        <AuthContext.Provider value={{login, logout, register, isLoading, userToken, userInfo,edit}}>
             {children}
         </AuthContext.Provider>
     )

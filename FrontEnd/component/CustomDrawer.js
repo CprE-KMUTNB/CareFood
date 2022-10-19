@@ -20,7 +20,7 @@ const CustomDrawer = (props) => {
             <DrawerContentScrollView {...props}>
                 <ImageBackground style={{padding: 20, marginTop: 60, marginLeft: 30, marginBottom: 20, marginRight: 50, alignItems:'center',}}>
                     <Profile/>
-                    <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10}}>{userInfo.name}</Text>
+                    <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10}}>{userInfo.realname}</Text>
                 </ImageBackground>
                 <View style={{flex:1, paddingHorizontal: 40}}>
                     <DrawerItemList {...props}/>

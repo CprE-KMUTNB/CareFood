@@ -8,6 +8,8 @@ import { AuthContext } from "../context/AuthContext";
 const RegisterScreen = ({navigation}) => {
     const [username,setUserName] = useState('');
     const [password,setPassWord] = useState('');
+    const [realname,setRealName] = useState('');
+    const [surname,setSurName] = useState('');
     const [age,setAge] = useState('');
     const [height,setHeight] = useState('');
     const [weight,setWeight] = useState('');
@@ -50,13 +52,15 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={realname} onChangeText={text=>setRealName(text)} 
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>นามสกุล</Text>
                     <View style={[styles.textInput,{left:15}]}>
-                        <TextInput style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={surname} onChangeText={text=>setSurName(text)}
+                        style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -90,7 +94,7 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {checkTextInput();register(username, password, age, height, weight); navigation.goBack()}} style={styles.button}>
+                <TouchableOpacity onPress={() => {checkTextInput();register(username, password,realname,surname, age, height, weight); navigation.goBack()}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>

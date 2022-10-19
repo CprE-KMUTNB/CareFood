@@ -10,6 +10,12 @@ const userSchema =new Schema({
     },password:{
         type:String,
         require:true
+    },realname:{
+        type:String,
+        require:true
+    },surname:{
+        type:String,
+        require:true
     },gender:{
         type:String
     },age:{
