@@ -26,13 +26,13 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput  value = {realname} onChangeText={text=>setRealName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput placeholder={userInfo.realname} value = {realname} onChangeText={text=>setRealName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>นามสกุล</Text>
                     <View style={[styles.textInput,{left:15}]}>
-                        <TextInput  value = {surname} onChangeText={text=>setSurName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput placeholder={userInfo.surname} value = {surname} onChangeText={text=>setSurName(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -44,21 +44,21 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-                        <TextInput value={age} onChangeText={text=>setAge(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput placeholder={userInfo.age} value={age} onChangeText={text=>setAge(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput value={height} onChangeText={text=>setHeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput placeholder={userInfo.height} value={height} onChangeText={text=>setHeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput value={weight} onChangeText={text=>setWeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
+                        <TextInput placeholder={userInfo.weight} value={weight} onChangeText={text=>setWeight(text)} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}} keyboardType='numeric'></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>

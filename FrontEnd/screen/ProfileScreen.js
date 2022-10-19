@@ -17,13 +17,13 @@ const ProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
-                        <TextInput value={userInfo.name} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={userInfo.realname} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>นามสกุล</Text>
                     <View style={[styles.textInput,{left:15}]}>
-                        <TextInput value="Cd" editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
+                        <TextInput value={userInfo.surname}editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
@@ -35,21 +35,21 @@ const ProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
-                        <TextInput value="20" editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={userInfo.age} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput value="180" editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={userInfo.height} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
-                        <TextInput value="60" editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
+                        <TextInput value={userInfo.weight} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>

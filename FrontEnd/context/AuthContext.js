@@ -70,6 +70,8 @@ export const AuthProvider = ({children}) => {
             userToken,realname, surname, age, height, weight}
         ).then(res=>{
             console.log("เเก้ไขสำเร็จ");
+            setUserInfo(res.data);
+            console.log(res.data);
         })
         .catch(err=>{
             console.log(err);
