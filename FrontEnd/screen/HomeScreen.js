@@ -6,7 +6,7 @@ const App = () => {
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>
       <View style={[styles.box,{flexDirection: 'column'}]}>
-        <Image source={{uri : 'https://randomuser.me/api/portraits/men/1.jpg'}} 
+        <Image source={require('../img/logo.png')}
           style={styles.image}/>
         <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
         <Text style={styles.text}>วันนี้ได้รับ</Text>
@@ -73,9 +73,8 @@ const App = () => {
     fontSize: 16
   },
   image :{
-    width: 100,
-    height: 100,
-    borderRadius : 50,
+    width: 79,
+    height: 82,
     marginTop: 30,
     marginBottom: 20
   }
