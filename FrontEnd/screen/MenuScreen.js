@@ -15,22 +15,22 @@ const MenuScreen = ({navigation}) => {
             <ScrollView>
                 <TouchableOpacity onPress={() => navigation.navigate('Menu_1')}>
                     <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
+                    <Text style={[styles.textScroll,{flex:1}]}>ข้าวผัดหมู</Text>
                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
                 <TouchableOpacity onPress={() => {}}>
                     <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
+                    <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
+                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>437 kcal</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
                 <TouchableOpacity onPress={() => {}}>
                     <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
+                    <Text style={[styles.textScroll,{flex:1}]}>โจ๊ก</Text>
+                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>362 kcal</Text>
                     </View>
                 </TouchableOpacity>
                 <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />

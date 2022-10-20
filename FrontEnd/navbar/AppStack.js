@@ -12,6 +12,8 @@ import ContactScreen from '../screen/ContactScreen';
 import SettingScreen from '../screen/SettingScreen';
 import EditProfileScreen from '../screen/EditProfileScreen';
 import Menu_1 from '../screen/Menu_1';
+import ActivityScreen from '../screen/ActivityScreen';
+import Activity_1 from '../screen/Activity_1'
 
 const Drawer = createDrawerNavigator();
 
@@ -45,6 +47,11 @@ const AppStack = () => {
                     <Octicons name='heart' size={22} color={color}/>
                 )
             }}/>
+            <Drawer.Screen name='Activity' component={ActivityScreen} options={{
+                drawerIcon: ({color}) => (
+                    <Octicons name='flame' size={22} color={color}/>
+                )
+            }}/>
             <Drawer.Screen name='Statistic' component={StatisticScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='graph' size={22} color={color}/>
@@ -64,6 +71,9 @@ const AppStack = () => {
                 drawerItemStyle: { display: 'none' }
             }}/>
             <Drawer.Screen name='Menu_1' component={Menu_1} options={{
+                drawerItemStyle: { display: 'none' }
+            }}/>
+            <Drawer.Screen name='Activity_1' component={Activity_1} options={{
                 drawerItemStyle: { display: 'none' }
             }}/>
             

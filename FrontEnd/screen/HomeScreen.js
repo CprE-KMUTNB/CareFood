@@ -15,7 +15,7 @@ const App = () => {
       <View style={styles.scroll}>
       <ScrollView>
         <View style={{flexDirection:'row'}}>
-          <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
+          <Text style={[styles.textScroll,{flex:1}]}>ข้าวผัดหมู</Text>
           <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>
         </View>
         <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', margin:10}} />
