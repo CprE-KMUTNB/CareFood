@@ -11,9 +11,6 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState([]);
     const [userInfo, setUserInfo] = useState([]);
-    const config = {
-        headers: { Authorization: `Bearer ${userToken}` }
-    };
 
     const login = (name,password) =>{
         setIsLoading(true);
@@ -70,8 +67,10 @@ export const AuthProvider = ({children}) => {
             userToken,realname, surname, age, height, weight}
         ).then(res=>{
             console.log("เเก้ไขสำเร็จ");
-            setUserInfo(res.data);
             console.log(res.data);
+            setUserInfo(res.data)
+
+
         })
         .catch(err=>{
             console.log(err);

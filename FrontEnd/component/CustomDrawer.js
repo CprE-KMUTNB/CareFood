@@ -35,9 +35,7 @@ const CustomDrawer = (props) => {
 const Profile = (props) => {
     return(
         <View>
-            <TouchableOpacity onPress={() => this.props.navigate('Profile')}>
                 <Image source={require('../img/profile.png')} style={{height:60, width:60}}/>
-            </TouchableOpacity>
         </View>
     )
 }

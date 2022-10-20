@@ -16,9 +16,11 @@ exports.edit = (req,res)=>{
                 height:req.body.height,
             }
         }).then(user=>{
+            console.log(user)
             return res.status(200).json(user)
         })
     }
+    
 }
 
 
