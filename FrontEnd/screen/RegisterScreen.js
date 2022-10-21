@@ -24,6 +24,14 @@ const RegisterScreen = ({navigation}) => {
           alert('กรุณากรอกรหัสผ่าน');
           return;
         }
+        if (!realname.trim()) {
+            alert('กรุณากรอกชื่อจริง');
+            return;
+        }
+        if (!surname.trim()) {
+            alert('กรุณากรอกนามสกุล');
+            return;
+        }
         alert('สมัครบัญชีสำเร็จ');
       }
 
@@ -36,28 +44,28 @@ const RegisterScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>ชื่อผู้ใช้</Text>
+                    <Text style={styles.text}>ชื่อผู้ใช้ *</Text>
                     <View style={[styles.textInput,{left:25}]}>
                         <TextInput value={username} onChangeText={text=>setUserName(text)} 
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>รหัสผ่าน</Text>
+                    <Text style={styles.text}>รหัสผ่าน *</Text>
                     <View style={[styles.textInput,{left:14}]}>
                         <TextInput value={password} onChangeText={text=>setPassWord(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>ชื่อจริง</Text>
+                    <Text style={styles.text}>ชื่อจริง *</Text>
                     <View style={[styles.textInput,{left:25}]}>
                         <TextInput value={realname} onChangeText={text=>setRealName(text)} 
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>นามสกุล</Text>
+                    <Text style={styles.text}>นามสกุล *</Text>
                     <View style={[styles.textInput,{left:15}]}>
                         <TextInput value={surname} onChangeText={text=>setSurName(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
@@ -65,13 +73,13 @@ const RegisterScreen = ({navigation}) => {
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>เพศ</Text>
-                    <View style={{marginLeft:45,  marginVertical: 5}}>
+                    <View style={{marginLeft:50,  marginVertical: 5}}>
                         <RadioButton/>
                     </View>
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
-                    <View style={[styles.textInput,{marginLeft:45, width: 50}]}>
+                    <View style={[styles.textInput,{marginLeft:55, width: 50}]}>
                         <TextInput value={age} onChangeText={text=>setAge(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
@@ -79,7 +87,7 @@ const RegisterScreen = ({navigation}) => {
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
-                    <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
+                    <View style={[styles.textInput,{marginLeft:35, width: 50}]}>
                         <TextInput value={height} onChangeText={text=>setHeight(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
@@ -87,7 +95,7 @@ const RegisterScreen = ({navigation}) => {
             </View>
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
-                    <View style={[styles.textInput,{marginLeft:25, width: 50}]}>
+                    <View style={[styles.textInput,{marginLeft:35, width: 50}]}>
                         <TextInput value={weight} onChangeText={text=>setWeight(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>

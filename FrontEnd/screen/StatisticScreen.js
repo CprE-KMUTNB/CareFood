@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, DefaultTheme} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -10,7 +10,7 @@ const StatisticScreen = () => {
         labels: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์"],
         datasets: [
           {
-            data: [20, 45, 28, 80, 99, 43]
+            data: [40, 45, 28, 80, 99, 43]
           }
         ]
       };
@@ -35,8 +35,8 @@ const StatisticScreen = () => {
                 width={Dimensions.get("window").width}
                 height={220}
                 chartConfig={{
-                    backgroundGradientFrom: "#FFF",
-                    backgroundGradientTo: "#FFF",
+                    backgroundGradientFrom: "#F2F2F2",
+                    backgroundGradientTo: "#F2F2F2",
                     height:100000,
                     fillShadowGradient: '#E01A22',
                     fillShadowGradientOpacity: 1,
@@ -69,13 +69,14 @@ const StatisticScreen = () => {
 const styles = StyleSheet.create({
     container : {
       flex : 1,  
-      marginTop:50
+      marginTop:50,
     },
     text:{
         fontFamily:'NotoSansThai',
         fontSize:16,
         textAlign:'center',
-        color: 'black'
+        color: 'black',
+        
     },
     box:{
         flexDirection:'row',

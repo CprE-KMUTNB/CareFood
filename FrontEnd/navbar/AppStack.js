@@ -24,6 +24,7 @@ const AppStack = () => {
         screenOptions={{headerShown: true,
             headerTitle: '',
             headerTransparent:true,
+            contentStyle:{backgroundColor:'#FFFFFF'},
             drawerActiveBackgroundColor: '#CBA2A2',
             drawerActiveTintColor: 'white',
             drawerInactiveTintColor: 'black',
