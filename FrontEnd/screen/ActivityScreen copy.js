@@ -1,69 +1,45 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
 const ActivityScreen = ({navigation}) => {
-
-    const [data, setData] = useState([]);
-    const [filterData, setFilterData] = useState([]);
-
-    useEffect(() => {
-        fetchData('https://randomuser.me/api/?results=20')
-    }, []);
-
-    const fetchData = async (url) => {
-        try{
-            const response = await fetch(url);
-            const json = await response.json()
-            setData(json.results);
-            setFilterData(json.results);
-            console.log(json.results);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
-
-    const searchFilterFunction = (text) => {
-        if (text){
-            const newData = data.filter(item => {
-                const itemData = item.name.first ? item.name.first.toUpperCase() : ''.toUpperCase()
-                const textData = text.toUpperCase();
-                return itemData.indexOf(textData) > -1;
-            })
-            setFilterData(newData);
-        }else{
-            setFilterData(data);
-        }
-    }
-
     return(
         <View style={styles.container}>
             <Text style={styles.text}>เมนูอาหาร</Text>
             <View style={styles.search}>
-                <TextInput placeholder='ค้นหากิจกรรม' placeholderTextColor='#FFFFFF' style={styles.textSearch}
-                onChangeText={event=>searchFilterFunction(event)}></TextInput>
+                <TextInput placeholder='ค้นหากิจกรรม' placeholderTextColor='#FFFFFF' style={styles.textSearch}></TextInput>
                 <Octicons name='search' size={19} color={'#FFFFFF'} style={{left: 210, position:'absolute'}}/>
             </View>
             <View style={styles.scroll}>
             <ScrollView>
-            {
-                filterData.map((item, index) => {
-                    return(
-                        <View key={index}>
-                            <TouchableOpacity style={styles.actBox} onPress={() => navigation.navigate('Activity_1')}>
-                                <View style={styles.activity}>
-                                    <Image source={{uri : item.picture.large}} style={styles.img}/>
-                                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]} >
-                                        {item.name.first}
-                                    </Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    )
-                })
-            }
+                <TouchableOpacity style={styles.actBox} onPress={() => navigation.navigate('Activity_1')}>
+                    <View style={styles.activity}>
+                        <Image source={require('../img/activity/run.png')} style={styles.img}/>
+                        <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>วิ่ง</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.actBox} onPress={() => {}}>
+                    <View style={styles.activity}>
+                        <Image source={require('../img/activity/swim.png')} style={styles.img}/>
+                        <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>ว่ายน้ำ</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.actBox} onPress={() => {}}>
+                    <View style={styles.activity}>
+                        <Image source={require('../img/activity/bicycle.png')} style={styles.img}/>
+                        <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>ปั่นจักรยาน</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.actBox} onPress={() => {}}>
+                    <View style={styles.activity}>
+                        <Image source={require('../img/activity/walk.png')} style={styles.img}/>
+                        <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>เดิน</Text>
+                    </View>
+                </TouchableOpacity>
             </ScrollView>
             </View>
         </View>

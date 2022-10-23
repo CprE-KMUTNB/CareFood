@@ -1,82 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
 const MenuScreen = ({navigation}) => {
+
+    const [data, setData] = useState([]);
+    const [filterData, setFilterData] = useState([]);
+
+    useEffect(() => {
+        fetchData('https://randomuser.me/api/?results=20')
+    }, []);
+
+    const fetchData = async (url) => {
+        try{
+            const response = await fetch(url);
+            const json = await response.json()
+            setData(json.results);
+            setFilterData(json.results);
+            console.log(json.results);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    const searchFilterFunction = (text) => {
+        if (text){
+            const newData = data.filter(item => {
+                const itemData = item.name.first ? item.name.first.toUpperCase() : ''.toUpperCase()
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            })
+            setFilterData(newData);
+        }else{
+            setFilterData(data);
+        }
+    }
+
     return(
         <View style={styles.container}>
             <Text style={styles.text}>เมนูอาหาร</Text>
             <View style={styles.search}>
-                <TextInput placeholder='ค้นหาเมนู' placeholderTextColor='#FFFFFF' style={styles.textSearch}></TextInput>
+                <TextInput placeholder='ค้นหาเมนู' placeholderTextColor='#FFFFFF' style={styles.textSearch}
+                onChangeText={event=>searchFilterFunction(event)}></TextInput>
                 <Octicons name='search' size={19} color={'#FFFFFF'} style={{left: 210, position:'absolute'}}/>
             </View>
             <View style={styles.scroll}>
             <ScrollView>
-                <TouchableOpacity onPress={() => navigation.navigate('Menu_1')}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}>ข้าวผัดหมู</Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}>ไก่ทอด</Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>437 kcal</Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}>โจ๊ก</Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>362 kcal</Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-                <TouchableOpacity onPress={() => {}}>
-                    <View style={{flexDirection:'row', marginHorizontal:10}}>
-                    <Text style={[styles.textScroll,{flex:1}]}></Text>
-                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}></Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
-
+            {
+                filterData.map((item, index) => {
+                    return(
+                        <View key={index}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Menu_1')}>
+                                <View style={{flexDirection:'row', marginHorizontal:10}}>
+                                    <Text style={styles.textScroll} >
+                                        {item.name.first}
+                                    </Text>
+                                </View>
+                            </TouchableOpacity>
+                            <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
+                        </View>
+                    )
+                })
+            }
             </ScrollView>
             </View>
         </View>
