@@ -1,7 +1,7 @@
 import React,{useContext, useState}  from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
-import RadioButton  from "../component/RadioButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import RadioForm, { RadioButtonLabel } from 'react-native-simple-radio-button';
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -10,10 +10,16 @@ const RegisterScreen = ({navigation}) => {
     const [password,setPassWord] = useState('');
     const [realname,setRealName] = useState('');
     const [surname,setSurName] = useState('');
+    const [gender,setGenDer] = useState('');
     const [age,setAge] = useState('');
     const [height,setHeight] = useState('');
     const [weight,setWeight] = useState('');
     const {register} = useContext(AuthContext);
+
+    const options = [
+        { label: 'ผู้ชาย', value: 'male' },
+        { label: 'ผู้หญิง', value: 'female' },
+      ]; 
 
     const checkTextInput = () => {
         if (!username.trim()) {
@@ -74,7 +80,19 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>เพศ</Text>
                     <View style={{marginLeft:50,  marginVertical: 5}}>
-                        <RadioButton/>
+                        <RadioForm
+                            radio_props={options}
+                            formHorizontal={true}
+                            initial={-1} 
+                            buttonColor={'#D9D9D9'}
+                            selectedButtonColor={'#D9D9D9'}
+                            labelStyle={{fontFamily:'NotoSansThai', paddingHorizontal:15}}
+                            buttonWrapStyle={{marginLeft: 50}}
+                            buttonSize={18}
+                            onPress={(value) => {
+                            setGenDer(value);
+                            }} 
+                        />
                     </View>
             </View>
             <View style={styles.box}>
@@ -102,7 +120,7 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {checkTextInput();register(username, password,realname,surname, age, height, weight); navigation.goBack()}} style={styles.button}>
+                <TouchableOpacity onPress={() => {checkTextInput();register(username, password,realname,surname, age, height, weight,gender); navigation.goBack()}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>

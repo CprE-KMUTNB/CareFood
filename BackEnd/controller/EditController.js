@@ -14,6 +14,7 @@ exports.edit = (req,res)=>{
                 age:req.body.age,
                 weight:req.body.weight,
                 height:req.body.height,
+                gender:req.body.gender,
             }
         }).then(user=>{
             console.log(user)

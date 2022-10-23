@@ -29,10 +29,10 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false);
     }
 
-    const register = (name, password,realname,surname, age, weight, height) =>{
+    const register = (name, password,realname,surname, age, weight, height, gender) =>{
         setIsLoading(true);
         axios.post(`${baseUrl}/api/register`,{
-        name, password,realname,surname,age, weight, height
+        name, password,realname,surname,age, weight, height, gender
         })
         .then(res=>{
             console.log(res.data);
@@ -61,10 +61,10 @@ export const AuthProvider = ({children}) => {
             console.log('isLogged in error ${e}');
         }
     }
-    const edit = (realname,surname,age,height,weight)=>{
+    const edit = (realname,surname,age,height,weight,gender)=>{
         setIsLoading(true);
         axios.post(`${baseUrl}/api/edit`,{
-            userToken,realname, surname, age, height, weight}
+            userToken,realname, surname, age, height, weight,gender}
         ).then(res=>{
             console.log("เเก้ไขสำเร็จ");
             console.log(res.data);

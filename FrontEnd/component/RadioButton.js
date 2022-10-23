@@ -23,7 +23,6 @@ const RadioButton = () => {
         onPress={(value) => {
           setChosenOption(value);
         }} 
-        
       />
     </View>
   );

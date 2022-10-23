@@ -1,7 +1,7 @@
 import React,{useContext,useState} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
-import RadioButton from "../component/RadioButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import RadioForm, { RadioButtonLabel } from 'react-native-simple-radio-button';
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -14,6 +14,12 @@ const EditProfileScreen = ({navigation}) => {
     const [height,setHeight] = useState('');
     const [weight,setWeight] = useState('');
     const {edit} = useContext(AuthContext);
+
+    const options = [
+        { label: 'ผู้ชาย', value: 'male' },
+        { label: 'ผู้หญิง', value: 'female' },
+      ]; 
+
     return(
         <KeyboardAwareScrollView style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>แก้ไขโปรไฟล์</Text>
@@ -38,7 +44,19 @@ const EditProfileScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>เพศ</Text>
                     <View style={{marginLeft:45,  marginVertical: 5}}>
-                        <RadioButton/>
+                        <RadioForm
+                            radio_props={options}
+                            formHorizontal={true}
+                            initial={0} 
+                            buttonColor={'#D9D9D9'}
+                            selectedButtonColor={'#D9D9D9'}
+                            labelStyle={{fontFamily:'NotoSansThai', paddingHorizontal:15}}
+                            buttonWrapStyle={{marginLeft: 50}}
+                            buttonSize={18}
+                            onPress={(value) => {
+                            setGenDer(value);
+                            }} 
+                        />
                     </View>
             </View>
             <View style={styles.box}>
@@ -63,7 +81,7 @@ const EditProfileScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight);navigation.navigate('Profile')}} style={styles.button}>
+                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight,gender);navigation.navigate('Profile')}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>บันทึก</Text>
                 </TouchableOpacity>
             </View>
