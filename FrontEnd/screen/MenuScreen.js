@@ -43,7 +43,8 @@ const MenuScreen = ({navigation}) => {
             <Text style={styles.text}>เมนูอาหาร</Text>
             <View style={styles.search}>
                 <TextInput placeholder='ค้นหาเมนู' placeholderTextColor='#FFFFFF' style={styles.textSearch}
-                onChangeText={event=>searchFilterFunction(event)}></TextInput>
+                onChangeText={event=>searchFilterFunction(event)}
+                clearButtonMode="always"></TextInput>
                 <Octicons name='search' size={19} color={'#FFFFFF'} style={{left: 210, position:'absolute'}}/>
             </View>
             <View style={styles.scroll}>
@@ -57,6 +58,7 @@ const MenuScreen = ({navigation}) => {
                                     <Text style={styles.textScroll} >
                                         {item.name.first}
                                     </Text>
+                                    <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>kcal</Text>
                                 </View>
                             </TouchableOpacity>
                             <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
