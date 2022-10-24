@@ -24,6 +24,10 @@ const userSchema =new Schema({
         type:String
     },weight:{
         type:String
+    },usercalfood:{
+        type:String
+    },usercalact:{
+        type:String
     }
 })
 module.exports=mongoose.model("userinfo",userSchema)

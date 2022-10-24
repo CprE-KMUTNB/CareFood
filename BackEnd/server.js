@@ -6,6 +6,7 @@ const login = require("./routes/LoginRoute")
 const edit = require("./routes/EditRoute")
 const search = require("./routes/SearchRoute")
 const calCal = require("./routes/CalculateCalRoute")
+const calAct = require("./routes/CalculateCalActRoute")
 
 
 require("dotenv").config()
@@ -40,3 +41,4 @@ app.use('/api',login)
 app.use('/api',edit)
 app.use('/api',search)
 app.use("/api",calCal)
+app.use("/api",calAct)
