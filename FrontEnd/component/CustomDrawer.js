@@ -14,6 +14,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const CustomDrawer = (props) => {
     const {userInfo} = useContext(AuthContext);
+    const {logout} = useContext(AuthContext);
 
     return(
         <View style={{flex:1, backgroundColor: '#CBA2A2'}}>
@@ -26,7 +27,14 @@ const CustomDrawer = (props) => {
                     <DrawerItemList {...props}/>
                 </View>
             </DrawerContentScrollView>
-            
+            <View style={{paddingLeft: 60, marginBottom:40}}>
+                    <TouchableOpacity style={{flexDirection:'row'}} onPress={() => {logout()}}>
+                        <Octicons name='sign-out' size={22} color='black'/>
+                        <Text style={{marginLeft:15, fontFamily:'NotoSansThai', fontSize:16, color:'black'}}>
+                            Log out
+                        </Text>
+                    </TouchableOpacity>
+            </View>
         </View>
     )
 }

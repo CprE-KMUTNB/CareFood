@@ -63,11 +63,11 @@ const AppStack = () => {
                     <Octicons name='mail' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen style={{top:50}}  name='Setting' component={SettingScreen} options={{
+            {/* <Drawer.Screen style={{top:50}}  name='Setting' component={SettingScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='gear' size={22} color={color}/>
                 )
-            }} />
+            }} /> */}
             <Drawer.Screen name='EditProfile' component={EditProfileScreen} options={{
                 drawerItemStyle: { display: 'none' }
             }}/>

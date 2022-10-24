@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect} from "react";
+import {Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext();
@@ -11,6 +12,17 @@ export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState([]);
     const [userInfo, setUserInfo] = useState([]);
+    const [status, setStatus] = useState([]);
+    const [data,setData] = useState([]);
+
+    const checkTextInput = (error,status) => 
+        Alert.alert(
+            error,
+            status,
+            [
+            { text: "ตกลง"}
+            ]
+        );
 
     const login = (name,password) =>{
         setIsLoading(true);
@@ -18,11 +30,19 @@ export const AuthProvider = ({children}) => {
             name,password
         })
         .then(res=>{
+            if (res.data.error){
+                setStatus(res.data.error)
+                console.log(res.data.error)
+                checkTextInput('ไม่สามารถเข้าสู่ระบบ',res.data.error)
+            }
+            else{
             console.log(res.data.token);
             console.log(res.data);
+            AsyncStorage.setItem('userToken', res.data.token)
             setUserToken(res.data.token);
             setUserInfo(res.data.userinfo);
-        })
+            
+        }})
         .catch(err=>{
             console.log(err);
         });
@@ -35,8 +55,14 @@ export const AuthProvider = ({children}) => {
         name, password,realname,surname,age, weight, height, gender
         })
         .then(res=>{
+            if (res.data.error){
+                setStatus(res.data.error)
+                console.log(res.data.error)
+                checkTextInput('ไม่สามารถสมัครบัญชี',res.data.error)
+            }
+            else{
             console.log(res.data);
-        })
+        }})
         .catch(err=>{
             console.log(err);
         })
@@ -48,6 +74,11 @@ export const AuthProvider = ({children}) => {
         setUserToken(null);
         AsyncStorage.removeItem('userToken');
         setIsLoading(false);
+    }
+
+    const select = (data) => {
+        setData(data)
+        console.log(data)
     }
 
     const isLoggedIn = async() =>{
@@ -84,7 +115,7 @@ export const AuthProvider = ({children}) => {
     
 
     return(
-        <AuthContext.Provider value={{login, logout, register, isLoading, userToken, userInfo,edit}}>
+        <AuthContext.Provider value={{login, logout, register, edit, select, isLoading, userToken, userInfo, status, data}}>
             {children}
         </AuthContext.Provider>
     )

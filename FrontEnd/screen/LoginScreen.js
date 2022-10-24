@@ -1,5 +1,5 @@
 import React,{useContext, useState} from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView} from "react-native";
 
 import { AuthContext } from "../context/AuthContext";
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -8,19 +8,7 @@ const LoginScreen = ({navigation}) => {
     const [username,setUserName] = useState('');
     const [password,setPassword] = useState('');
     const {login} = useContext(AuthContext);
-
-    const checkTextInput = () => {
-        if (!username.trim()) {
-          alert('กรุณากรอกชื่อผู้ใช้');
-          return;
-        }
-        if (!password.trim()) {
-          alert('กรุณากรอกรหัสผ่าน');
-          return;
-        }
-
-      }
-
+    
     return(
         <KeyboardAvoidingView style={styles.container}
          behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -39,13 +27,8 @@ const LoginScreen = ({navigation}) => {
                         secureTextEntry={true}/>
                     </View>
                 </View>
-                <View>
-                    <TouchableOpacity onPress={() => {}}>
-                        <Text style={[styles.text, {fontSize: 14, textAlign:'right', marginRight:80}]}>ลืมรหัสผ่าน</Text>
-                    </TouchableOpacity>
-                </View>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {checkTextInput(); login(username,password)}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {login(username,password)}} style={styles.button}>
                         <Text style={[styles.text, {textAlign:'center'}]}>เข้าสู่ระบบ</Text>
                     </TouchableOpacity>
                 </View>
@@ -103,7 +86,7 @@ const styles = StyleSheet.create({
     },
     button:{
         alignContent:"center", 
-        marginTop:20, 
+        marginTop:30, 
         backgroundColor:'#CBA2A2',
         width:120,
         height:35,

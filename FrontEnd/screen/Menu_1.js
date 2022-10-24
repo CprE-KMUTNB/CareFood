@@ -1,18 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, KeyboardAvoidingView} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
-import MenuCheck from '../component/MenuCheck';
+import { AuthContext } from "../context/AuthContext";
 
 const Menu_1 = () => {
+    const {data} = useContext(AuthContext);
+
     return(
         <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? 'height' : 'position'} 
         style={styles.container}>
-            <Text style={styles.text}>ข้าวผัดหมู</Text>
+            <Text style={styles.text}>{data.name.first}</Text>
             <View style={{alignItems:'center'}}>
-                <Image style={styles.image} source={require('../menu/pork_fried_rice.jpg')}/>
+                <Image style={styles.image} source={{uri : data.picture.large}}/>
             </View>
             <Text style={[styles.text,{textAlign:'left'}]}>ตัวเลือก</Text>
             <View style={styles.input}>

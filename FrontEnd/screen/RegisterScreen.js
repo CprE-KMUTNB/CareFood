@@ -21,26 +21,6 @@ const RegisterScreen = ({navigation}) => {
         { label: 'ผู้หญิง', value: 'female' },
       ]; 
 
-    const checkTextInput = () => {
-        if (!username.trim()) {
-          alert('กรุณากรอกชื่อผู้ใช้');
-          return;
-        }
-        if (!password.trim()) {
-          alert('กรุณากรอกรหัสผ่าน');
-          return;
-        }
-        if (!realname.trim()) {
-            alert('กรุณากรอกชื่อจริง');
-            return;
-        }
-        if (!surname.trim()) {
-            alert('กรุณากรอกนามสกุล');
-            return;
-        }
-        alert('สมัครบัญชีสำเร็จ');
-      }
-
     return(
         <KeyboardAwareScrollView style={{flex:1}}>
             <View style={styles.container}>
@@ -120,7 +100,7 @@ const RegisterScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {checkTextInput();register(username, password,realname,surname, age, height, weight,gender); navigation.goBack()}} style={styles.button}>
+                <TouchableOpacity onPress={() => {register(username, password,realname,surname, age, height, weight,gender); navigation.goBack()}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ยืนยัน</Text>
                 </TouchableOpacity>
             </View>

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
+import { AuthContext } from "../context/AuthContext";
 
 const MenuScreen = ({navigation}) => {
 
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
+    const {select} = useContext(AuthContext);
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -44,7 +46,7 @@ const MenuScreen = ({navigation}) => {
             <View style={styles.search}>
                 <TextInput placeholder='ค้นหาเมนู' placeholderTextColor='#FFFFFF' style={styles.textSearch}
                 onChangeText={event=>searchFilterFunction(event)}
-                clearButtonMode="always"></TextInput>
+                ></TextInput>
                 <Octicons name='search' size={19} color={'#FFFFFF'} style={{left: 210, position:'absolute'}}/>
             </View>
             <View style={styles.scroll}>
@@ -53,7 +55,7 @@ const MenuScreen = ({navigation}) => {
                 filterData.map((item, index) => {
                     return(
                         <View key={index}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Menu_1')}>
+                            <TouchableOpacity onPress={() => {select(item);navigation.navigate('Menu_1')}}>
                                 <View style={{flexDirection:'row', marginHorizontal:10}}>
                                     <Text style={styles.textScroll} >
                                         {item.name.first}
