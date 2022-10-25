@@ -6,8 +6,8 @@
      const Token = req.body.userToken
      const userid = jwt.decode(Token)
      const nameact = req.body.mets
-     const minute = req.body.minutes
-     const mass = userinfodb.findById(userid,{weights})
+     const minute = parseint(req.body.minutes)
+     const mass = parseint(userinfodb.findById(userid,{weights}))
     
      result = (((met.nameact)*3.5*mass)/200)*minute
 
