@@ -88,8 +88,8 @@ export const AuthProvider = ({children}) => {
             
         })
         .then(res=>{
-            console.log(res.data.food)
-            setMenu(res.data.food) 
+            console.log(res.data[0].food)
+            setMenu(res.data[0].food) 
         })
         .catch(err=>{
             console.log(err);
