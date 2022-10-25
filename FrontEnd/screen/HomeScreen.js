@@ -1,8 +1,28 @@
-import React from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {View, Text,Image, StyleSheet,ScrollView} from 'react-native'
-
+import { AuthContext } from "../context/AuthContext";
 
 const App = () => {
+  const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const {select} = useContext(AuthContext);
+  const {menu} = useContext(AuthContext);
+
+  useEffect(() => {
+    fetchData()
+}, []);
+
+const fetchData = async (url) => {
+    try{
+        setData(menu);
+        setFilterData(menu);
+        console.log(menu);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>
       <View style={[styles.box,{flexDirection: 'column'}]}>
@@ -14,11 +34,21 @@ const App = () => {
       </View>
       <View style={styles.scroll}>
       <ScrollView>
-        <View style={{flexDirection:'row'}}>
-          <Text style={[styles.textScroll,{flex:1}]}>ข้าวผัดหมู</Text>
-          <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>534 kcal</Text>
-        </View>
-        <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', margin:10}} />
+      {
+        filterData.map((item, index) => {
+          return(
+            <View key={index}>
+              <View style={{flexDirection:'row', marginHorizontal:10}}>
+                <Text style={styles.textScroll} >
+                  {item.name}
+                </Text>
+                <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>kcal</Text>
+              </View>
+              <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
+            </View>
+          )
+        })
+      } 
       </ScrollView>
       </View>
     </View>
@@ -46,7 +76,7 @@ const App = () => {
     marginHorizontal: 80,
     padding:20,
     borderRadius : 5,
-    width: 220
+    width: 260
   },
   textStatus :{
     fontFamily: 'NotoSansThai_Bold',

@@ -78,7 +78,7 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>อายุ</Text>
                     <View style={[styles.textInput,{marginLeft:55, width: 50}]}>
-                        <TextInput value={age} onChangeText={text=>setAge(text)}
+                        <TextInput value={age} onChangeText={text=>setAge(text)} keyboardType='numeric'
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ปี</Text>
@@ -86,7 +86,7 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>ส่วนสูง</Text>
                     <View style={[styles.textInput,{marginLeft:35, width: 50}]}>
-                        <TextInput value={height} onChangeText={text=>setHeight(text)}
+                        <TextInput value={height} onChangeText={text=>setHeight(text)} keyboardType='numeric'
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ซ.ม.</Text>
@@ -94,7 +94,7 @@ const RegisterScreen = ({navigation}) => {
             <View style={styles.box}>
                     <Text style={styles.text}>น้ำหนัก</Text>
                     <View style={[styles.textInput,{marginLeft:35, width: 50}]}>
-                        <TextInput value={weight} onChangeText={text=>setWeight(text)}
+                        <TextInput value={weight} onChangeText={text=>setWeight(text)} keyboardType='numeric'
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16,}}></TextInput>
                     </View>
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>

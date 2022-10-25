@@ -9,27 +9,17 @@ const ContactScreen = () => {
     const {listmenu} = useContext(AuthContext);
 
     return(
-        <KeyboardAwareScrollView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.text}>ติดต่อ</Text>
-            <View style={[styles.box,{marginTop:60,}]}>
-                <Text style={styles.text}>ถึง : support@mail.com</Text>
-            </View>
-            <View style={{alignItems:'center'}}>
-            <View style={styles.boxInput}>
-                <TextInput placeholder='ป้อนข้อความของคุณตรงนี้' multiline={true} numberOfLines={20} textAlignVertical={'top'} style={styles.textInput}>
-
-                </TextInput>
-            </View>
-            </View>
-            <View style={{flexDirection:'column', alignItems:'flex-end', marginRight:80, marginTop:40}}>
-                <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => listmenu()}>
-                        <Ionicons name='send' size={35} />
-                    </TouchableOpacity>
-                    <Text style={styles.text}>ส่งข้อความ</Text>
+            <View style={{marginTop:50}}>
+                <View style={styles.boxInput}>
+                    <Text style={[styles.text,{marginTop:40}]}>ธนชาติ โพธิหลักทรัพย์</Text>
+                </View>
+                <View style={styles.boxInput}>
+                <Text style={[styles.text,{marginTop:40}]}>ปัญจพล ปิ่นภู่</Text>
                 </View>
             </View>
-        </KeyboardAwareScrollView>
+        </View>
     )
 }
 
@@ -49,24 +39,14 @@ const styles = StyleSheet.create({
         marginBottom:40,
         marginHorizontal:100,
     },
-    button:{
-        backgroundColor:'#F0E4E4',
-        width:120,
-        height:25,
-        justifyContent: 'center',
-        borderRadius:10
-    },
     boxInput:{
         backgroundColor:'#F0E4E4',
         width:270, 
-        height:310,
+        height:150,
         borderRadius:20,
+        alignSelf:'center',
+        marginTop:50
     },
-    textInput:{
-        fontFamily:'NotoSansThai',
-        fontSize:16,
-        padding:20
-    }
 })
 
 export default ContactScreen ;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image, Modal, Alert, Pressable} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -7,6 +7,7 @@ const ActivityScreen = ({navigation}) => {
 
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -47,12 +48,38 @@ const ActivityScreen = ({navigation}) => {
                 <Octicons name='search' size={19} color={'#FFFFFF'} style={{left: 210, position:'absolute'}}/>
             </View>
             <View style={styles.scroll}>
+            <View>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                    <Text style={styles.text}>ป้อนระยะเวลาที่ทำกิจกรรม</Text>
+                    <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                        <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
+                        <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
+                    </View>
+                    <View style={{alignItems:'center'}}>
+                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.button}>
+                            <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
+                </TouchableOpacity>
+            </View>
+                </View>
+                </View>
+            </Modal>
+            </View>
             <ScrollView>
             {
                 filterData.map((item, index) => {
                     return(
                         <View key={index}>
-                            <TouchableOpacity style={styles.actBox} onPress={() => navigation.navigate('Activity_1')}>
+                            <TouchableOpacity style={styles.actBox} onPress={() => setModalVisible(true)}>
                                 <View style={styles.activity}>
                                     <Image source={{uri : item.picture.large}} style={styles.img}/>
                                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]} >
@@ -137,7 +164,46 @@ const styles = StyleSheet.create({
     img:{
         width: 75,
         height: 75,
-    }
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "#F2F2F2",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        height:200,
+        width:300,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      button:{
+        alignContent:"center", 
+        backgroundColor:'#22E070',
+        width:120,
+        height:35,
+        justifyContent: 'center',
+        borderRadius:30
+    },
+    textInput:{
+        backgroundColor:'#F0E4E4',
+        width:50,
+        height:35,
+        borderRadius:10,
+        
+    },
+        
 })
 
 export default ActivityScreen ;
