@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity,TextInput, KeyboardAvoidingView} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+import { AuthContext } from "../context/AuthContext";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const ContactScreen = () => {
+    const {listmenu} = useContext(AuthContext);
+
     return(
         <KeyboardAwareScrollView style={styles.container}>
             <Text style={styles.text}>ติดต่อ</Text>
@@ -20,7 +23,7 @@ const ContactScreen = () => {
             </View>
             <View style={{flexDirection:'column', alignItems:'flex-end', marginRight:80, marginTop:40}}>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => listmenu()}>
                         <Ionicons name='send' size={35} />
                     </TouchableOpacity>
                     <Text style={styles.text}>ส่งข้อความ</Text>

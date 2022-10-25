@@ -9,18 +9,19 @@ const MenuScreen = ({navigation}) => {
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const {select} = useContext(AuthContext);
+    const {menu} = useContext(AuthContext);
 
     useEffect(() => {
-        fetchData('https://randomuser.me/api/?results=20')
+        fetchData('https://randomuser.me/api/?results=2')
     }, []);
 
     const fetchData = async (url) => {
         try{
             const response = await fetch(url);
             const json = await response.json()
-            setData(json.results);
-            setFilterData(json.results);
-            console.log(json.results);
+            setData(menu);
+            setFilterData(menu);
+            console.log(menu);
         }
         catch (error) {
             console.error(error);
@@ -30,7 +31,7 @@ const MenuScreen = ({navigation}) => {
     const searchFilterFunction = (text) => {
         if (text){
             const newData = data.filter(item => {
-                const itemData = item.name.first ? item.name.first.toUpperCase() : ''.toUpperCase()
+                const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase()
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
             })
@@ -58,7 +59,7 @@ const MenuScreen = ({navigation}) => {
                             <TouchableOpacity onPress={() => {select(item);navigation.navigate('Menu_1')}}>
                                 <View style={{flexDirection:'row', marginHorizontal:10}}>
                                     <Text style={styles.textScroll} >
-                                        {item.name.first}
+                                        {item.name}
                                     </Text>
                                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>kcal</Text>
                                 </View>
@@ -67,7 +68,7 @@ const MenuScreen = ({navigation}) => {
                         </View>
                     )
                 })
-            }
+            } 
             </ScrollView>
             </View>
         </View>

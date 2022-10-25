@@ -9,7 +9,7 @@ const calCal = require("./routes/CalculateCalRoute")
 const calAct = require("./routes/CalculateCalActRoute")
 const saveActCal = require("./routes/SaveActCalRoute")
 const saveFoodCal = require("./routes/SaveFoodCalRoute")
-
+const listMenu = require('./routes/MenuRoute')
 
 require("dotenv").config()
 
@@ -46,3 +46,4 @@ app.use("/api",calCal)
 app.use("/api",calAct)
 app.use("/api",saveActCal)
 app.use("/api",saveFoodCal)
+app.use('/api', listMenu)

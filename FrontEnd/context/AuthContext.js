@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState([]);
     const [status, setStatus] = useState([]);
     const [data,setData] = useState([]);
+    const [menu, setMenu] = useState([]);
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -81,6 +82,21 @@ export const AuthProvider = ({children}) => {
         console.log(data)
     }
 
+    const listmenu = () =>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/listmenu`,{
+            
+        })
+        .then(res=>{
+            console.log(res.data.food)
+            setMenu(res.data.food) 
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -115,7 +131,7 @@ export const AuthProvider = ({children}) => {
     
 
     return(
-        <AuthContext.Provider value={{login, logout, register, edit, select, isLoading, userToken, userInfo, status, data}}>
+        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, isLoading, userToken, userInfo, status, data, menu}}>
             {children}
         </AuthContext.Provider>
     )

@@ -8,6 +8,7 @@ const LoginScreen = ({navigation}) => {
     const [username,setUserName] = useState('');
     const [password,setPassword] = useState('');
     const {login} = useContext(AuthContext);
+    const {listmenu} = useContext(AuthContext);
     
     return(
         <KeyboardAvoidingView style={styles.container}
@@ -28,7 +29,7 @@ const LoginScreen = ({navigation}) => {
                     </View>
                 </View>
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => {login(username,password)}} style={styles.button}>
+                    <TouchableOpacity onPress={() => {login(username,password),listmenu()}} style={styles.button}>
                         <Text style={[styles.text, {textAlign:'center'}]}>เข้าสู่ระบบ</Text>
                     </TouchableOpacity>
                 </View>
