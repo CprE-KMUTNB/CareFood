@@ -29,12 +29,10 @@ const App = () => {
   container : {
     flex : 1,  
     alignItems: 'center',
-    backgroundColor:'white',
   },
   box:{
     flex : 1.5,  
     alignItems: 'center',
-    backgroundColor:'white',
     marginTop: 20,
     marginBottom: 10,
     paddingTop: 30,
