@@ -5,7 +5,6 @@ import { AuthContext } from "../context/AuthContext";
 const App = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  const {select} = useContext(AuthContext);
   const {menu} = useContext(AuthContext);
 
   useEffect(() => {
@@ -42,7 +41,8 @@ const fetchData = async (url) => {
                 <Text style={styles.textScroll} >
                   {item.name}
                 </Text>
-                <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>kcal</Text>
+                <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>{item.kcal}</Text>
+                <Text style={[styles.textScroll,{marginLeft: 10, textAlign:'right'}]}>kcal</Text>
               </View>
               <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
             </View>

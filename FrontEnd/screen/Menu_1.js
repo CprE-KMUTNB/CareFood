@@ -13,9 +13,9 @@ const Menu_1 = () => {
         behavior={Platform.OS === "ios" ? 'height' : 'position'} 
         style={styles.container}>
             <Text style={styles.text}>{data.name}</Text>
-            {/* <View style={{alignItems:'center'}}>
-                <Image style={styles.image} source={{uri : data.picture.large}}/>
-            </View> */}
+            <View style={{alignItems:'center'}}>
+                <Image style={styles.image} source={{uri : data.image}}/>
+            </View> 
             <Text style={[styles.text,{textAlign:'left'}]}>ตัวเลือก</Text>
             <View style={styles.input}>
                 <Text style={[styles.text,{textAlign:'left'}]}>ข้าว</Text>

@@ -1,3 +1,4 @@
 [{
-    "food":[{"name":"กะเพราหมูกรอบ"},{"name":"ข้าวผัด"}]
+    "food":[{"name":"กะเพราหมูกรอบ", "kcal":"650", "image": "https://obs.line-scdn.net/0hs7RN0odzLBhvNzo69dlTT1VhL3dcWz8bCwF9GzNZci9DAm9GVQJrLkw0cX1KAWtGAQNgeUI1NykXDmsdBwFr/w1200"},
+    {"name":"ข้าวผัด", "kcal":"534","image":"https://s359.kapook.com/pagebuilder/6d0bad9e-ccdc-414b-a9b0-fdbabaea1daa.jpg"}]
 }]
