@@ -71,6 +71,23 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false);
     }
 
+    const edit = (realname,surname,age,height,weight,gender)=>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/edit`,{
+            userToken,realname, surname, age, height, weight,gender}
+        ).then(res=>{
+            console.log("เเก้ไขสำเร็จ");
+            console.log(res.data);
+            setUserInfo(res.data)
+
+
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
+    }
+
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
@@ -125,6 +142,10 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const savecal = () => {
+
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -135,22 +156,6 @@ export const AuthProvider = ({children}) => {
         catch(e){
             console.log('isLogged in error ${e}');
         }
-    }
-    const edit = (realname,surname,age,height,weight,gender)=>{
-        setIsLoading(true);
-        axios.post(`${baseUrl}/api/edit`,{
-            userToken,realname, surname, age, height, weight,gender}
-        ).then(res=>{
-            console.log("เเก้ไขสำเร็จ");
-            console.log(res.data);
-            setUserInfo(res.data)
-
-
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-        setIsLoading(false);
     }
 
     useEffect(() => {
