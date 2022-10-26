@@ -6,21 +6,26 @@ const App = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const {menu} = useContext(AuthContext);
+  const {listmenu} = useContext(AuthContext);
 
   useEffect(() => {
     fetchData()
 }, []);
 
-const fetchData = async (url) => {
-    try{
-        setData(menu);
-        setFilterData(menu);
-        console.log(menu);
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
+  const fetchData = async (url) => {
+      try{
+          setData(menu);
+          setFilterData(menu);
+          console.log(menu);
+      }
+      catch (error) {
+          console.error(error);
+      }
+  }
+
+  useEffect(() => {
+    listmenu();
+  } , [])
 
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>

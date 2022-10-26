@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, KeyboardAvoidingView} from "react-native";
+import React, {useContext, useState} from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, KeyboardAvoidingView, Modal, Alert} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -7,6 +7,12 @@ import { AuthContext } from "../context/AuthContext";
 
 const Menu_1 = () => {
     const {data} = useContext(AuthContext);
+    const {cal} = useContext(AuthContext);
+    const [first, setFirst] = useState('');
+    const [second, setSecond] = useState('');
+    const [third, setThird] = useState('')
+    const [modalVisible, setModalVisible] = useState(false);
+    const {kcal} = useContext(AuthContext);
 
     return(
         <KeyboardAvoidingView 
@@ -20,28 +26,56 @@ const Menu_1 = () => {
             <View style={styles.input}>
                 <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.one}</Text>
                 <View style={styles.textInput}>
-                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
+                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} value={first} onChangeText={text=>setFirst(text)} keyboardType='numeric'></TextInput>
                 </View>
                 <Text style={[styles.text,{marginLeft:20}]}>g</Text>
             </View>
             <View style={styles.input}>
                 <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.two}</Text>
                 <View style={styles.textInput}>
-                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
+                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} value={second} onChangeText={text=>setSecond(text)} keyboardType='numeric'></TextInput>
                 </View>
                 <Text style={[styles.text,{marginLeft:20}]}>g</Text>
             </View>
             <View style={styles.input}>
                 <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.three}</Text>
                 <View style={styles.textInput}>
-                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
+                    <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} value={third} onChangeText={text=>setThird(text)} keyboardType='numeric'></TextInput>
                 </View>
                 <Text style={[styles.text,{marginLeft:20}]}>g</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {}} style={styles.button}>
+                <TouchableOpacity onPress={() => [setModalVisible(true), cal([data.ingredient.one,data.ingredient.two,data.ingredient.three],[first,second,third])]} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                 </TouchableOpacity>
+                <View>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Text style={styles.text}>บันทึกแคลอรีหรือไม่</Text>
+                            <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                                <Text style={[styles.text,{marginLeft:20}]}>{kcal}</Text>
+                            </View>
+                            <View style={{alignItems:'center', flexDirection:'row'}}>
+                                <TouchableOpacity onPress={() => {}} style={styles.buttonpress}>
+                                            <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                                            <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        </View>
+                    </Modal>
+                </View>
             </View>
         </KeyboardAvoidingView>
     )
@@ -96,7 +130,39 @@ const styles = StyleSheet.create({
         height:35,
         justifyContent: 'center',
         borderRadius:30
-    }
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "#F2F2F2",
+        borderRadius: 20,
+        paddingVertical: 35,
+        alignItems: "center",
+        height:200,
+        width:300,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      buttonpress:{
+        alignContent:"center", 
+        backgroundColor:'#22E070',
+        width:80,
+        height:35,
+        justifyContent: 'center',
+        borderRadius:30,
+        marginTop:20
+    },
 })
 
 export default Menu_1 ;

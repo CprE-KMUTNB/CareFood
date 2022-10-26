@@ -11,4 +11,5 @@ exports.deletes = (req,res)=>{
             return res.json({"result":'ลบบัญชีสำเร็จ'})
         })
     }
+    console.log(req)
 }

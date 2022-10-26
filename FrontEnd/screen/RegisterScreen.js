@@ -51,8 +51,8 @@ const RegisterScreen = ({navigation}) => {
                     </View>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>นามสกุล *</Text>
-                    <View style={[styles.textInput,{left:15}]}>
+                    <Text style={styles.text}>นามสกุล </Text>
+                    <View style={[styles.textInput,{left:25}]}>
                         <TextInput value={surname} onChangeText={text=>setSurName(text)}
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>
