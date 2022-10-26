@@ -9,7 +9,7 @@
      const minute = parseint(req.body.minutes)
      const mass = parseint(userinfodb.findById(userid,{weights}))
     
-     result = (((met.nameact)*3.5*mass)/200)*minute
+     const result = (((met[nameact])*3.5*mass)/200)*minute
 
      res.status(200).json({result:result})
  }

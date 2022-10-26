@@ -1,4 +1,5 @@
 const userinfodb = require('../model/userinfo')
+const jwt = require('jsonwebtoken');
 
 exports.deletes = (req,res)=>{
     const Token = req.body.userToken
@@ -9,6 +10,5 @@ exports.deletes = (req,res)=>{
         userinfodb.findByIdAndDelete(userid.userid).then(result=>{
             return res.json({"result":result})
         })
-       
     }
 }
