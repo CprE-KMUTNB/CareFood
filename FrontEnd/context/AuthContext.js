@@ -97,6 +97,19 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false);
     }
 
+    const deletes = () => {
+        setUserToken(null);
+        axios.post(`${baseUrl}/api/deletes`,{
+            userToken
+        })
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -135,7 +148,7 @@ export const AuthProvider = ({children}) => {
     
 
     return(
-        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, isLoading, userToken, userInfo, status, data, menu}}>
+        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, isLoading, userToken, userInfo, status, data, menu}}>
             {children}
         </AuthContext.Provider>
     )

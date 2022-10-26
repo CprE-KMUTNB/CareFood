@@ -1,11 +1,14 @@
-import React, {useContext} from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image,} from "react-native";
+import React, {useContext, useState} from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Modal, Alert} from "react-native";
 import RadioButton from "../component/RadioButton";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { AuthContext } from "../context/AuthContext";
 
 const ProfileScreen = ({navigation}) => {
     const {userInfo} = useContext(AuthContext);
+    const {deletes} = useContext(AuthContext)
+    const [modalVisible, setModalVisible] = useState(false);
 
     return(
         <View style={{flex:1, marginTop:50}}>
@@ -58,6 +61,37 @@ const ProfileScreen = ({navigation}) => {
                             <Text style={[styles.text, {textAlign:'center'}]}>แก้ไข</Text>
                 </TouchableOpacity>
             </View>
+            <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.icon}>
+                <Ionicons name='trash' size={26} color='red'/>
+            </TouchableOpacity>
+            <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.text}>ลบบัญชีหรือไม่</Text>
+                        <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                            <Text style={[styles.text,{marginLeft:20}]}>หากลบแล้วจะไม่สามารถล็อคอินได้อีก</Text>
+                        </View>
+                        <View style={{alignItems:'center', flexDirection:'row'}}>
+                            <TouchableOpacity onPress={() => deletes()} style={styles.buttonpress}>
+                                        <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                                        <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    </View>
+                </Modal>
+            </View>
         </View>
     )
 }
@@ -93,13 +127,50 @@ const styles = StyleSheet.create({
     },
     button:{
         alignContent:"center", 
-        marginTop:20, 
+        marginTop:40, 
         backgroundColor:'#CBA2A2',
         width:120,
         height:35,
         justifyContent: 'center',
         borderRadius:30
-    }
+    },
+    icon:{
+        alignSelf:'flex-end',
+        marginRight:30,
+        marginTop:30
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "#F2F2F2",
+        borderRadius: 20,
+        paddingVertical: 35,
+        alignItems: "center",
+        height:200,
+        width:300,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      buttonpress:{
+        alignContent:"center", 
+        backgroundColor:'#22E070',
+        width:80,
+        height:35,
+        justifyContent: 'center',
+        borderRadius:30,
+        marginTop:20
+    },
 })
 
 

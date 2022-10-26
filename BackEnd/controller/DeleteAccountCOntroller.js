@@ -8,7 +8,7 @@ exports.deletes = (req,res)=>{
         return res.status(400)
     }else{
         userinfodb.findByIdAndDelete(userid.userid).then(result=>{
-            return res.json({"result":result})
+            return res.json({"result":'ลบบัญชีสำเร็จ'})
         })
     }
 }

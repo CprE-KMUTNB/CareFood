@@ -49,30 +49,30 @@ const ActivityScreen = ({navigation}) => {
             </View>
             <View style={styles.scroll}>
             <View>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    <Text style={styles.text}>ป้อนระยะเวลาที่ทำกิจกรรม</Text>
-                    <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
-                        <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
-                        <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.text}>ป้อนระยะเวลาที่ทำกิจกรรม</Text>
+                        <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                            <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
+                            <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
+                        </View>
+                        <View style={{alignItems:'center'}}>
+                    <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.button}>
+                                <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
+                    </TouchableOpacity>
+                </View>
                     </View>
-                    <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.button}>
-                            <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
-                </TouchableOpacity>
-            </View>
-                </View>
-                </View>
-            </Modal>
+                    </View>
+                </Modal>
             </View>
             <ScrollView>
             {
