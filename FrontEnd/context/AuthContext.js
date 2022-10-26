@@ -128,6 +128,10 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         isLoggedIn();
     }, [])
+
+    useEffect(() => {
+        listmenu();
+    }, [])
     
 
     return(
