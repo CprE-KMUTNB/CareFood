@@ -18,21 +18,21 @@ const Menu_1 = () => {
             </View> 
             <Text style={[styles.text,{textAlign:'left'}]}>ตัวเลือก</Text>
             <View style={styles.input}>
-                <Text style={[styles.text,{textAlign:'left'}]}>ข้าว</Text>
+                <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.one}</Text>
                 <View style={styles.textInput}>
                     <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
                 </View>
                 <Text style={[styles.text,{marginLeft:20}]}>g</Text>
             </View>
             <View style={styles.input}>
-                <Text style={[styles.text,{textAlign:'left'}]}>หมู</Text>
+                <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.two}</Text>
                 <View style={styles.textInput}>
                     <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
                 </View>
                 <Text style={[styles.text,{marginLeft:20}]}>g</Text>
             </View>
             <View style={styles.input}>
-                <Text style={[styles.text,{textAlign:'left'}]}>น้ำตาล</Text>
+                <Text style={[styles.text,{textAlign:'left'}]}>{data.ingredient.three}</Text>
                 <View style={styles.textInput}>
                     <TextInput style={{fontFamily:'NotoSansThai', padding:2, fontSize:16,}} keyboardType='numeric'></TextInput>
                 </View>
