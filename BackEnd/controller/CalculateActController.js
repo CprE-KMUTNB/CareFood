@@ -1,15 +1,21 @@
  const met = require("../model/Activity.json")
- const userinfodb = require("../model/userinfo")
  const jwt = require('jsonwebtoken');
-
+ const Activity = require("../model/Activity.json")
  exports.calAct = (req,res)=>{
      const Token = req.body.userToken
      const userid = jwt.decode(Token)
-     const nameact = req.body.mets
-     const minute = parseint(req.body.minutes)
-     const mass = parseint(userinfodb.findById(userid,{weights}))
-    
-     const result = (((met[nameact])*3.5*mass)/200)*minute
+     console.log(userid.userid);
+     const mets = req.body.mets
+     const minute = parseInt(req.body.minutes)
+     const mass = parseInt(req.body.weight)
+     const nameact = req.body.nameact
+     console.log(Activity[nameact][mets]);
 
-     res.status(200).json({result:result})
+    if (!mass) {
+        return res.json({"result":"Couldn't find weight"})  
+    } else {
+    var result = (((Activity[nameact][mets])*3.5*mass)/200)*minute
+    console.log(result);
+    res.status(200).json({result:result})
+    }
  }
