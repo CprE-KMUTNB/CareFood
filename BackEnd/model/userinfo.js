@@ -15,7 +15,6 @@ const userSchema =new Schema({
         require:true
     },surname:{
         type:String,
-        require:true
     },gender:{
         type:String
     },age:{
