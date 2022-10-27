@@ -1,5 +1,4 @@
- const met = require("../model/Activity.json")
- const jwt = require('jsonwebtoken');
+
  const Activity = require("../model/Activity.json")
  exports.calAct = (req,res)=>{
      const mets = req.body.mets
