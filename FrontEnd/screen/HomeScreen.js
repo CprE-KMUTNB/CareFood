@@ -1,37 +1,21 @@
 import React, {useState, useContext, useEffect} from 'react'
-import {View, Text,Image, StyleSheet,ScrollView} from 'react-native'
+import {View, Text,Image, StyleSheet,ScrollView ,TouchableOpacity, Modal, Alert} from 'react-native'
 import { AuthContext } from "../context/AuthContext";
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [filterData, setFilterData] = useState([]);
   const {userInfo} = useContext(AuthContext);
-  const {menu} = useContext(AuthContext);
-  const {listmenu} = useContext(AuthContext);
   const {foodInfo} = useContext(AuthContext);
+  const {delfood} = useContext(AuthContext);
   const {showcal} = useContext(AuthContext);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [food, setFood] = useState(AuthContext);
+  const [date, setDate] = useState(AuthContext);
+  const [time, setTime] = useState(AuthContext);
 
   useEffect(() => {
-    fetchData()
-}, []);
-
-  const fetchData = async (url) => {
-      try{
-          setData(foodInfo);
-          console.log(foodInfo);
-      }
-      catch (error) {
-          console.error(error);
-      }
-  }
-
-  useEffect(() => {
-    listmenu();
-  } , [])
-
-  useEffect(() => {
+    console.log(foodInfo.length)
     showcal(userInfo.name);
-  } , [])
+  } , [foodInfo.length])
 
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>
@@ -42,19 +26,47 @@ const App = () => {
         <Text style={styles.text}>วันนี้ได้รับ</Text>
         <Text style={styles.textKcal}>{foodInfo.cal} kcal</Text>
       </View>
+      <View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+          }}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text style={styles.text}>ลบข้อมูลอาหารหรือไม่</Text>
+                  <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                    <Text style={[styles.text]}>{food}</Text>
+                  </View>
+                  <View style={{alignItems:'center', flexDirection:'row'}}>
+                    <TouchableOpacity onPress={() => {delfood(userInfo.name, date, time);setModalVisible(!modalVisible)}} style={styles.buttonpress}>
+                      <Text style={[styles.text, {textAlign:'center', marginBottom:0}]}>ตกลง</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                      <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
+                    </TouchableOpacity>
+                  </View>
+              </View>
+            </View>
+        </Modal>
+      </View>
       <View style={styles.scroll}>
       <ScrollView>
       {
-        data.map((item, index) => {
+        foodInfo.map((item, index) => {
           return(
             <View key={index}>
-              <View style={{flexDirection:'row', marginHorizontal:10}}>
+              <TouchableOpacity style={{flexDirection:'row', marginHorizontal:10}} onPress={() => {setModalVisible(true);setFood(item.foodname);setDate(item.date);setTime(item.time)}}>
                 <Text style={styles.textScroll} >
                   {item.foodname}
                 </Text>
                 <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>{item.cal}</Text>
                 <Text style={[styles.textScroll,{marginLeft: 10, textAlign:'right'}]}>kcal</Text>
-              </View>
+              </TouchableOpacity>
               <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />
             </View>
           )
@@ -99,7 +111,7 @@ const App = () => {
     fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 16,
-    padding: 10
+
   },
   textKcal :{
     fontFamily: 'NotoSansThai',
@@ -116,7 +128,39 @@ const App = () => {
     height: 82,
     marginTop: 30,
     marginBottom: 20
-  }
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "#F2F2F2",
+    borderRadius: 20,
+    paddingVertical: 35,
+    alignItems: "center",
+    height:200,
+    width:300,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  buttonpress:{
+    alignContent:"center", 
+    backgroundColor:'#22E070',
+    width:80,
+    height:35,
+    justifyContent: 'center',
+    borderRadius:30,
+    marginTop:20
+  },
  }) 
 
  export default App;

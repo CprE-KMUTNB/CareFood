@@ -1,4 +1,4 @@
-import React,{useContext,useState} from "react";
+import React,{useContext,useState, useEffect} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import RadioForm, { RadioButtonLabel } from 'react-native-simple-radio-button';
@@ -14,11 +14,14 @@ const EditProfileScreen = ({navigation}) => {
     const [height,setHeight] = useState('');
     const [weight,setWeight] = useState('');
     const {edit} = useContext(AuthContext);
+    const {isLoggedIn} = useContext(AuthContext);
 
     const options = [
         { label: 'ผู้ชาย', value: 'male' },
         { label: 'ผู้หญิง', value: 'female' },
       ]; 
+      
+    
 
     return(
         <KeyboardAwareScrollView style={{flex:1, marginTop:50}}>
@@ -81,7 +84,7 @@ const EditProfileScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight,gender)}} style={styles.button}>
+                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight,gender);navigation.navigate('Profile');edit(realname,surname,age,height,weight,gender);}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>บันทึก</Text>
                 </TouchableOpacity>
             </View>

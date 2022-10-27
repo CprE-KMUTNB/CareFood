@@ -107,7 +107,7 @@ export const AuthProvider = ({children}) => {
             
         })
         .then(res=>{
-            
+            console.log(res.data)
             setMenu(res.data[0].food) 
         })
         .catch(err=>{
@@ -122,7 +122,7 @@ export const AuthProvider = ({children}) => {
             userToken
         })
         .then(res=>{
-            set
+            
             console.log(res)
         })
         .catch(err=>{
@@ -160,8 +160,21 @@ export const AuthProvider = ({children}) => {
             name
         })
         .then(res=>{
-            console.log(res.data)
+            
             setFoodInfo(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
+    const delfood = (name, date, time) =>{
+        axios.post(`${baseUrl}/api/deletesfood`,{
+            name, date, time
+        })
+        .then(res=>{
+            showcal(userInfo.name)
+            console.log(res.data)
         })
         .catch(err=>{
             console.log(err);
@@ -182,11 +195,13 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         isLoggedIn();
+        listmenu();
+        showcal(userInfo.name);
     }, [])
 
 
     return(
-        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, cal, savecal,showcal, isLoading, userToken, userInfo, status, data, menu, kcal, foodInfo}}>
+        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, deletes, cal, savecal, showcal, delfood, isLoading, userToken, userInfo, status, data, menu, kcal, foodInfo}}>
             {children}
         </AuthContext.Provider>
     )

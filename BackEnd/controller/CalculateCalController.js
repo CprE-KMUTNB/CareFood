@@ -6,7 +6,7 @@ exports.calCal = (req,res)=>{
 
      for (let i =0 ;i<IngredientArray.length;i = i+1){
        
-         result = result + parseInt(foodcal[IngredientArray[i]])*parseInt(PortionArray[i])
+         result = result + parseInt(foodcal[IngredientArray[i]])*parseInt(PortionArray[i])/100
        
        console.log(result);
       }
