@@ -15,6 +15,7 @@ const info = require("./routes/infoRoute")
 const deletesact = require("./routes/DeleteActRoute")
 const deletesfood = require("./routes/DeleteFoodRoute")
 const returncalfood = require("./routes/ReturncalfoodRoute")
+const caltoday = require("./routes/CalculateTodayRoute")
 
 require("dotenv").config()
 
@@ -57,3 +58,4 @@ app.use("/api",info)
 app.use("/api",deletesact)
 app.use("/api",deletesfood)
 app.use("/api",returncalfood)
+app.use("/api",caltoday)

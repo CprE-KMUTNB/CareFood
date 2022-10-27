@@ -11,6 +11,9 @@ const usercalact =new Schema({
    },
    time:{
     type:String
+   },date:{
+   type:String
+      }
    }
-})
+)
 module.exports=mongoose.model("usercalact",usercalact)
