@@ -6,6 +6,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import { AuthContext } from "../context/AuthContext";
 
 const Menu_1 = () => {
+    const {userInfo} = useContext(AuthContext);
     const {data} = useContext(AuthContext);
     const {cal} = useContext(AuthContext);
     const [first, setFirst] = useState('');
@@ -13,6 +14,7 @@ const Menu_1 = () => {
     const [third, setThird] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
     const {kcal} = useContext(AuthContext);
+    const {savecal} = useContext(AuthContext);
 
     return(
         <KeyboardAvoidingView 
@@ -65,7 +67,7 @@ const Menu_1 = () => {
                                 <Text style={[styles.text,{marginLeft:20}]}>{kcal}</Text>
                             </View>
                             <View style={{alignItems:'center', flexDirection:'row'}}>
-                                <TouchableOpacity onPress={() => {}} style={styles.buttonpress}>
+                                <TouchableOpacity onPress={() => savecal(userInfo.name, data.name, kcal)} style={styles.buttonpress}>
                                             <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
