@@ -15,6 +15,7 @@ export const AuthProvider = ({children}) => {
     const [status, setStatus] = useState([]);
     const [data,setData] = useState([]);
     const [menu, setMenu] = useState([]);
+    const [kcal, setKcal] = useState('');
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -70,6 +71,23 @@ export const AuthProvider = ({children}) => {
         setIsLoading(false);
     }
 
+    const edit = (realname,surname,age,height,weight,gender)=>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/edit`,{
+            userToken,realname, surname, age, height, weight,gender}
+        ).then(res=>{
+            console.log("เเก้ไขสำเร็จ");
+            console.log(res.data);
+            setUserInfo(res.data)
+
+
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
+    }
+
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
@@ -103,11 +121,29 @@ export const AuthProvider = ({children}) => {
             userToken
         })
         .then(res=>{
+            set
             console.log(res)
         })
         .catch(err=>{
             console.log(err);
         })
+    }
+
+    const cal = (ing, por) =>{
+        axios.post(`${baseUrl}/api/calCal`,{
+            userToken, ing, por
+        })
+        .then(res=>{
+            console.log(res.data.result)
+            setKcal(res.data.result)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
+    const savecal = () => {
+
     }
 
     const isLoggedIn = async() =>{
@@ -121,34 +157,15 @@ export const AuthProvider = ({children}) => {
             console.log('isLogged in error ${e}');
         }
     }
-    const edit = (realname,surname,age,height,weight,gender)=>{
-        setIsLoading(true);
-        axios.post(`${baseUrl}/api/edit`,{
-            userToken,realname, surname, age, height, weight,gender}
-        ).then(res=>{
-            console.log("เเก้ไขสำเร็จ");
-            console.log(res.data);
-            setUserInfo(res.data)
-
-
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-        setIsLoading(false);
-    }
 
     useEffect(() => {
         isLoggedIn();
     }, [])
 
-    useEffect(() => {
-        listmenu();
-    }, [])
     
 
     return(
-        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, isLoading, userToken, userInfo, status, data, menu}}>
+        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, cal, isLoading, userToken, userInfo, status, data, menu, kcal}}>
             {children}
         </AuthContext.Provider>
     )
