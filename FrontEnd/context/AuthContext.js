@@ -16,6 +16,7 @@ export const AuthProvider = ({children}) => {
     const [data,setData] = useState([]);
     const [menu, setMenu] = useState([]);
     const [kcal, setKcal] = useState('');
+    const [foodInfo, setFoodInfo] = useState([]);
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -106,7 +107,7 @@ export const AuthProvider = ({children}) => {
             
         })
         .then(res=>{
-            console.log(res.data[0].food)
+            
             setMenu(res.data[0].food) 
         })
         .catch(err=>{
@@ -154,6 +155,19 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const showcal = (name) =>{
+        axios.post(`${baseUrl}/api/returncalfood`,{
+            name
+        })
+        .then(res=>{
+            console.log(res.data)
+            setFoodInfo(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -170,10 +184,9 @@ export const AuthProvider = ({children}) => {
         isLoggedIn();
     }, [])
 
-    
 
     return(
-        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, cal, savecal, isLoading, userToken, userInfo, status, data, menu, kcal}}>
+        <AuthContext.Provider value={{login, logout, register, edit, select, listmenu, deletes, cal, savecal,showcal, isLoading, userToken, userInfo, status, data, menu, kcal, foodInfo}}>
             {children}
         </AuthContext.Provider>
     )

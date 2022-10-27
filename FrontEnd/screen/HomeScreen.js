@@ -5,8 +5,11 @@ import { AuthContext } from "../context/AuthContext";
 const App = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
+  const {userInfo} = useContext(AuthContext);
   const {menu} = useContext(AuthContext);
   const {listmenu} = useContext(AuthContext);
+  const {foodInfo} = useContext(AuthContext);
+  const {showcal} = useContext(AuthContext);
 
   useEffect(() => {
     fetchData()
@@ -14,9 +17,8 @@ const App = () => {
 
   const fetchData = async (url) => {
       try{
-          setData(menu);
-          setFilterData(menu);
-          console.log(menu);
+          setData(foodInfo);
+          console.log(foodInfo);
       }
       catch (error) {
           console.error(error);
@@ -27,6 +29,10 @@ const App = () => {
     listmenu();
   } , [])
 
+  useEffect(() => {
+    showcal(userInfo.name);
+  } , [])
+
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>
       <View style={[styles.box,{flexDirection: 'column'}]}>
@@ -34,19 +40,19 @@ const App = () => {
           style={styles.image}/>
         <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
         <Text style={styles.text}>วันนี้ได้รับ</Text>
-        <Text style={styles.textKcal}>543 kcal</Text>
+        <Text style={styles.textKcal}>{foodInfo.cal} kcal</Text>
       </View>
       <View style={styles.scroll}>
       <ScrollView>
       {
-        filterData.map((item, index) => {
+        data.map((item, index) => {
           return(
             <View key={index}>
               <View style={{flexDirection:'row', marginHorizontal:10}}>
                 <Text style={styles.textScroll} >
-                  {item.name}
+                  {item.foodname}
                 </Text>
-                <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>{item.kcal}</Text>
+                <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]}>{item.cal}</Text>
                 <Text style={[styles.textScroll,{marginLeft: 10, textAlign:'right'}]}>kcal</Text>
               </View>
               <View style={{flex: 1, height: 2, backgroundColor: '#D9D9D9', marginVertical:10}} />

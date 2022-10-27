@@ -8,7 +8,8 @@ const LoginScreen = ({navigation}) => {
     const [username,setUserName] = useState('');
     const [password,setPassword] = useState('');
     const {login} = useContext(AuthContext);
-    const {listmenu} = useContext(AuthContext);
+    const {showcal} = useContext(AuthContext);
+    const {userInfo} = useContext(AuthContext);
     
     return(
         <KeyboardAvoidingView style={styles.container}
