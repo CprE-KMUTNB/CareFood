@@ -8,7 +8,7 @@ exports.caltoday = (req,res)=>{
         for (let i = 0;i<result.length;i = i+1)
         {
             
-            answer = answer + result[i].cal
+            answer = answer + parseInt(result[i].cal0)
         }
         return res.json({result:answer})
      })
