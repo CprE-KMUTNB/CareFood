@@ -1,5 +1,5 @@
 const express = require("express")
-const { saveFoodCal } = require("../controller/SaveActCalController")
+const {saveFoodCal} = require("../controller/SaveFoodCalController")
 const router = express.Router()
 
 router.post("/savefoodcal",saveFoodCal)

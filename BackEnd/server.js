@@ -11,6 +11,7 @@ const saveActCal = require("./routes/SaveActCalRoute")
 const saveFoodCal = require("./routes/SaveFoodCalRoute")
 const listMenu = require('./routes/MenuRoute')
 const deletes = require("./routes/DeleteAccountRoute")
+const info = require("./routes/infoRoute")
 
 require("dotenv").config()
 
@@ -49,3 +50,4 @@ app.use("/api",saveActCal)
 app.use("/api",saveFoodCal)
 app.use('/api', listMenu)
 app.use("/api",deletes)
+app.use("/api",info)

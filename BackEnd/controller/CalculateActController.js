@@ -2,9 +2,6 @@
  const jwt = require('jsonwebtoken');
  const Activity = require("../model/Activity.json")
  exports.calAct = (req,res)=>{
-     const Token = req.body.userToken
-     const userid = jwt.decode(Token)
-     console.log(userid.userid);
      const mets = req.body.mets
      const minute = parseInt(req.body.minutes)
      const mass = parseInt(req.body.weight)

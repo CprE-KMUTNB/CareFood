@@ -1,19 +1,16 @@
-const userinfodb = require('../model/userinfo')
 
-exports.saveFoodCal = (req,res)=>{
-    const actcal = req.body.result
-    const Token = req.body.userToken
-    const userid = jwt.decode(Token)
-    if(!userid){
+const usercalact = require('../model/usercalact')
+const moment = require("moment")
+
+exports.saveActCal = (req,res)=>{
+    var name = req.body.name
+    var nameact = req.body.nameact
+    var cal = req.body.result
+    var time = moment().format('DD MM YYYY h:mm:ss')
+    if(!req.body){
         return res.status(400)
     }else{
-        userinfodb.findByIdAndUpdate(userid.userid,{
-            $set:{
-                usercalact:actcal
-            }
-        }).then(user=>{
-            console.log(user)
-            return res.status(200).json({success:"Save สำเร็จ"})
-        })
+        usercalact.create({name,nameact,cal,time})
     }
+    return res.json({result:"success"})
 }
