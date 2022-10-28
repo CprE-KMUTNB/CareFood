@@ -171,6 +171,7 @@ export const AuthProvider = ({children}) => {
     }
 
     const showcal = (name) =>{
+        setIsLoading(true);
         axios.post(`${baseUrl}/api/returncalfood`,{
             name
         })
@@ -181,6 +182,7 @@ export const AuthProvider = ({children}) => {
         .catch(err=>{
             console.log(err);
         })
+        setIsLoading(false);
     }
 
     const delfood = (name, date, time) =>{
@@ -223,8 +225,18 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         isLoggedIn();
+
+    }, [])
+
+    useEffect(() => {
         showcal(userInfo.name);
-        listmenu();
+    }, [])
+
+    useEffect(() => {
+        listact();
+    }, [])
+
+    useEffect(() => {
         listact();
     }, [])
 
