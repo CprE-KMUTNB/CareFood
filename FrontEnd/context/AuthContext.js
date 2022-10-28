@@ -18,6 +18,7 @@ export const AuthProvider = ({children}) => {
     const [menu, setMenu] = useState([]);
     const [kcal, setKcal] = useState('');
     const [foodInfo, setFoodInfo] = useState([]);
+    const [power, setPower] = useState('');
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -81,8 +82,6 @@ export const AuthProvider = ({children}) => {
             console.log("เเก้ไขสำเร็จ");
             console.log(res.data);
             setUserInfo(res.data)
-
-
         })
         .catch(err=>{
             console.log(err);
@@ -197,6 +196,19 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const calpow = (nameact, mets, minutes, weight) =>{
+        axios.post(`${baseUrl}/api/calAct`,{
+            nameact, mets, minutes, weight
+        })
+        .then(res=>{
+            console.log(res.data.result)
+            setPower(res.data.result)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -212,6 +224,8 @@ export const AuthProvider = ({children}) => {
     useEffect(() => {
         isLoggedIn();
         showcal(userInfo.name);
+        listmenu();
+        listact();
     }, [])
 
 

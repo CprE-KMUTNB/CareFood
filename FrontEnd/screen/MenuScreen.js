@@ -11,6 +11,7 @@ const MenuScreen = ({navigation}) => {
     const {select} = useContext(AuthContext);
     const {menu} = useContext(AuthContext);
 
+
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=2')
     }, []);
