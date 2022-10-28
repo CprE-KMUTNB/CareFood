@@ -67,11 +67,14 @@ const ActivityScreen = ({navigation}) => {
                             <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
                             <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
                         </View>
-                        <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={styles.button}>
+                        <View style={{alignItems:'center', flexDirection:'row'}}>
+                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible)}} style={styles.buttonpress}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
-                    </TouchableOpacity>
-                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                                <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                     </View>
                 </Modal>
@@ -190,13 +193,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22
       },
-      button:{
+      buttonpress:{
         alignContent:"center", 
         backgroundColor:'#22E070',
-        width:120,
+        width:80,
         height:35,
         justifyContent: 'center',
-        borderRadius:30
+        borderRadius:30,
+        marginTop:20
     },
     textInput:{
         backgroundColor:'#F0E4E4',
