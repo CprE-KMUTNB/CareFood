@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image, Modal, Alert, Pressable} from "react-native";
 
 import Octicons from 'react-native-vector-icons/Octicons';
+import { AuthContext } from "../context/AuthContext";
 
 const ActivityScreen = ({navigation}) => {
 
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const {activity} = useContext(AuthContext);
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -17,9 +19,9 @@ const ActivityScreen = ({navigation}) => {
         try{
             const response = await fetch(url);
             const json = await response.json()
-            setData(json.results);
-            setFilterData(json.results);
-            console.log(json.results);
+            setData(activity);
+            setFilterData(activity);
+            console.log(activity);
         }
         catch (error) {
             console.error(error);
@@ -29,7 +31,7 @@ const ActivityScreen = ({navigation}) => {
     const searchFilterFunction = (text) => {
         if (text){
             const newData = data.filter(item => {
-                const itemData = item.name.first ? item.name.first.toUpperCase() : ''.toUpperCase()
+                const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase()
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
             })
@@ -81,9 +83,9 @@ const ActivityScreen = ({navigation}) => {
                         <View key={index}>
                             <TouchableOpacity style={styles.actBox} onPress={() => setModalVisible(true)}>
                                 <View style={styles.activity}>
-                                    <Image source={{uri : item.picture.large}} style={styles.img}/>
+                                    <Image source={{uri : item.image}} style={styles.img}/>
                                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]} >
-                                        {item.name.first}
+                                        {item.name}
                                     </Text>
                                 </View>
                             </TouchableOpacity>

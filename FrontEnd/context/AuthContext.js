@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState([]);
     const [status, setStatus] = useState([]);
     const [data,setData] = useState([]);
+    const [activity, setActivity] = useState([]);
     const [menu, setMenu] = useState([]);
     const [kcal, setKcal] = useState('');
     const [foodInfo, setFoodInfo] = useState([]);
@@ -101,13 +102,28 @@ export const AuthProvider = ({children}) => {
         console.log(data)
     }
 
+    const listact = () =>{
+        setIsLoading(true);
+        axios.post(`${baseUrl}/api/listact`,{
+            
+        })
+        .then(res=>{
+            console.log(res.data[0].activity)
+            setActivity(res.data[0].activity) 
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setIsLoading(false);
+    }
+
     const listmenu = () =>{
         setIsLoading(true);
         axios.post(`${baseUrl}/api/listmenu`,{
             
         })
         .then(res=>{
-            console.log(res.data)
+            console.log(res.data[0].food)
             setMenu(res.data[0].food) 
         })
         .catch(err=>{
@@ -195,13 +211,12 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         isLoggedIn();
-        listmenu();
         showcal(userInfo.name);
     }, [])
 
 
     return(
-        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, deletes, cal, savecal, showcal, delfood, isLoading, userToken, userInfo, status, data, menu, kcal, foodInfo}}>
+        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo}}>
             {children}
         </AuthContext.Provider>
     )
