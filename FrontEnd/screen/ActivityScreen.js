@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image, Modal, Alert, Pressable} from "react-native";
-
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Image, Modal, Alert} from "react-native";
+import RNPickerSelect from 'react-native-picker-select';
 import Octicons from 'react-native-vector-icons/Octicons';
 import { AuthContext } from "../context/AuthContext";
 
@@ -10,6 +10,7 @@ const ActivityScreen = ({navigation}) => {
     const [filterData, setFilterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const {activity} = useContext(AuthContext);
+    const [mets, setMets] = useState();
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -63,6 +64,14 @@ const ActivityScreen = ({navigation}) => {
                     <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.text}>ป้อนระยะเวลาที่ทำกิจกรรม</Text>
+                        <RNPickerSelect
+                            onValueChange={(value) => setMets(value)}
+                            items={[
+                                { label: 'Football', value: 'football' },
+                                { label: 'Baseball', value: 'baseball' },
+                                { label: 'Hockey', value: 'hockey' },
+                            ]}
+                        />
                         <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
                             <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
                             <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
@@ -176,7 +185,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 35,
         alignItems: "center",
-        height:200,
+        height:280,
         width:300,
         shadowColor: "#000",
         shadowOffset: {

@@ -229,15 +229,15 @@ export const AuthProvider = ({children}) => {
     }, [])
 
     useEffect(() => {
+        listact();
+    }, [])
+
+    useEffect(() => {
+        listmenu();
+    }, [])
+
+    useEffect(() => {
         showcal(userInfo.name);
-    }, [])
-
-    useEffect(() => {
-        listact();
-    }, [])
-
-    useEffect(() => {
-        listact();
     }, [])
 
 
