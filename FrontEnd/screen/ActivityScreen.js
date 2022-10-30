@@ -5,12 +5,18 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import { AuthContext } from "../context/AuthContext";
 
 const ActivityScreen = ({navigation}) => {
-
+    const {userInfo} = useContext(AuthContext);
     const [data, setData] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [alertVisible, setAlertVisible] = useState(false);
     const {activity} = useContext(AuthContext);
     const [mets, setMets] = useState();
+    const [nameact,setNameact] = useState('')
+    const {calpow} = useContext(AuthContext);
+    const [minute,setMinute] = useState('')
+    const {power} = useContext(AuthContext);
+    const {savepow} = useContext(AuthContext);
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -65,22 +71,55 @@ const ActivityScreen = ({navigation}) => {
                     <View style={styles.modalView}>
                         <Text style={styles.text}>ป้อนระยะเวลาที่ทำกิจกรรม</Text>
                         <RNPickerSelect
+                            placeholder={{
+                                label: 'เลือกระดับความเข้มข้น',
+                                value: null,
+                            }}
                             onValueChange={(value) => setMets(value)}
                             items={[
-                                { label: 'Football', value: 'football' },
-                                { label: 'Baseball', value: 'baseball' },
-                                { label: 'Hockey', value: 'hockey' },
+                                { label: 'น้อยกว่า 5', value: 'lower than 5' },
+                                { label: '5', value: '5' },
+                                { label: '6', value: '6' },
                             ]}
                         />
                         <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
-                            <TextInput style={styles.textInput} keyboardType='numeric'></TextInput>
+                            <TextInput style={styles.textInput} keyboardType='numeric' value={minute} onChangeText={text=>setMinute(text)}></TextInput>
                             <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
                         </View>
                         <View style={{alignItems:'center', flexDirection:'row'}}>
-                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible)}} style={styles.buttonpress}>
+                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible);calpow(nameact, mets, minute, userInfo.weight);setAlertVisible(true)}} style={styles.buttonpress}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                                <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    </View>
+                </Modal>
+            </View>
+            <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={alertVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setAlertVisible(!alertVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                    <View style={[styles.modalView,{height:220}]}>
+                        <Text style={styles.text}>บันทึกข้อมูลหรือไม่</Text>
+                        <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
+                            <Text style={[styles.text,{marginLeft:20}]}>{power}</Text>
+                            <Text style={[styles.text,{marginLeft:20}]}>kcal</Text>
+                        </View>
+                        <View style={{alignItems:'center', flexDirection:'row'}}>
+                            <TouchableOpacity onPress={() => {setAlertVisible(!alertVisible);savepow(userInfo.name, nameact, power)}} style={styles.buttonpress}>
+                                <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => setAlertVisible(!alertVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
                             </TouchableOpacity>
                         </View>
@@ -93,7 +132,7 @@ const ActivityScreen = ({navigation}) => {
                 filterData.map((item, index) => {
                     return(
                         <View key={index}>
-                            <TouchableOpacity style={styles.actBox} onPress={() => setModalVisible(true)}>
+                            <TouchableOpacity style={styles.actBox} onPress={() => {setModalVisible(true);setNameact(item.name)}}>
                                 <View style={styles.activity}>
                                     <Image source={{uri : item.image}} style={styles.img}/>
                                     <Text style={[styles.textScroll,{flex:1, textAlign:'right'}]} >

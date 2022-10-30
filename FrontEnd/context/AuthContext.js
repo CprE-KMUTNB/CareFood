@@ -211,6 +211,18 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const savepow = (name, nameact, result) => {
+        axios.post(`${baseUrl}/api/saveactcal`,{
+            name, nameact, result
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -242,7 +254,7 @@ export const AuthProvider = ({children}) => {
 
 
     return(
-        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo}}>
+        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, calpow, savepow, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo, power}}>
             {children}
         </AuthContext.Provider>
     )
