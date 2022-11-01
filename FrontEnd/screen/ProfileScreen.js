@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Modal, Alert} from "react-native";
 import RadioButton from "../component/RadioButton";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Octicons from 'react-native-vector-icons/Octicons';
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -76,9 +77,10 @@ const ProfileScreen = ({navigation}) => {
                 >
                     <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.text}>ลบบัญชีหรือไม่</Text>
+                        <Octicons name='alert' size={26} color='red' style={{marginBottom:10}}/>
+                        <Text style={styles.textAlert}>ลบบัญชีหรือไม่</Text>
                         <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
-                            <Text style={[styles.text,{marginLeft:20}]}>หากลบแล้วจะไม่สามารถล็อคอินได้อีก</Text>
+                            <Text style={[styles.textAlert,{marginLeft:20}]}>หากลบแล้วจะไม่สามารถล็อคอินได้อีก</Text>
                         </View>
                         <View style={{alignItems:'center', flexDirection:'row'}}>
                             <TouchableOpacity onPress={() => deletes()} style={styles.buttonpress}>
@@ -118,6 +120,11 @@ const styles = StyleSheet.create({
         color:'black',
         fontSize:16
     },
+    textAlert:{
+        fontFamily: 'NotoSansThai_Bold',
+        color:'black',
+        fontSize:16
+    },
     textInput:{
         backgroundColor:'#F0E4E4',
         width:220,
@@ -145,7 +152,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingVertical: 35,
         alignItems: "center",
-        height:200,
+        height:240,
         width:300,
         shadowColor: "#000",
         shadowOffset: {

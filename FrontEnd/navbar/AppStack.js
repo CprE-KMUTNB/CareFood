@@ -13,7 +13,8 @@ import SettingScreen from '../screen/SettingScreen';
 import EditProfileScreen from '../screen/EditProfileScreen';
 import Menu_1 from '../screen/Menu_1';
 import ActivityScreen from '../screen/ActivityScreen';
-import Activity_1 from '../screen/Activity_1'
+import Activity_1 from '../screen/Activity_1';
+import LoginScreen from '../screen/LoginScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -33,32 +34,32 @@ const AppStack = () => {
                 fontFamily:'NotoSansThai', 
                 fontSize:16}
             }}>
-            <Drawer.Screen name='Home' component={HomeScreen} options={{
+            <Drawer.Screen name='หน้าแรก' component={HomeScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='home' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen name='Profile' component={ProfileScreen} style={{margin:20}} options={{
+            <Drawer.Screen name='โปรไฟล์' component={ProfileScreen} style={{margin:20}} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='person' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen name='Menu' component={MenuScreen} options={{
+            <Drawer.Screen name='เมนูอาหาร' component={MenuScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='heart' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen name='Activity' component={ActivityScreen} options={{
+            <Drawer.Screen name='กิจกรรม' component={ActivityScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='flame' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen name='Statistic' component={StatisticScreen} options={{
+            <Drawer.Screen name='สถิติ' component={StatisticScreen} options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='graph' size={22} color={color}/>
                 )
             }}/>
-            <Drawer.Screen name='Contact' component={ContactScreen}options={{
+            <Drawer.Screen name='ติดต่อ' component={ContactScreen}options={{
                 drawerIcon: ({color}) => (
                     <Octicons name='mail' size={22} color={color}/>
                 )

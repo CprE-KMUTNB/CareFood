@@ -21,7 +21,7 @@ const CustomDrawer = (props) => {
             <DrawerContentScrollView {...props}>
                 <ImageBackground style={{padding: 20, marginTop: 60, marginLeft: 30, marginBottom: 20, marginRight: 50, alignItems:'center',}}>
                     <Profile/>
-                    <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10}}>{userInfo.realname}</Text>
+                    <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10, color:'black'}}>{userInfo.realname}</Text>
                 </ImageBackground>
                 <View style={{flex:1, paddingHorizontal: 40}}>
                     <DrawerItemList {...props}/>
@@ -31,7 +31,7 @@ const CustomDrawer = (props) => {
                     <TouchableOpacity style={{flexDirection:'row'}} onPress={() => {logout()}}>
                         <Octicons name='sign-out' size={22} color='black'/>
                         <Text style={{marginLeft:15, fontFamily:'NotoSansThai', fontSize:16, color:'black'}}>
-                            Log out
+                            ออกจากระบบ
                         </Text>
                     </TouchableOpacity>
             </View>

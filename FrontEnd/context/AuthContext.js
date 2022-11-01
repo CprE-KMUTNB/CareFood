@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 import axios from "axios";
 
-const baseUrl = "http://10.0.2.2:5500"
+const baseUrl = "https://carefood007.herokuapp.com"
 
 export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);

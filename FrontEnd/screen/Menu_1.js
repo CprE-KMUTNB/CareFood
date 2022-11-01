@@ -21,7 +21,7 @@ const Menu_1 = () => {
         <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? 'height' : 'position'} 
         style={styles.container}>
-            <Text style={styles.text}>{data.name}</Text>
+            <Text style={styles.textHeader}>{data.name}</Text>
             <View style={{alignItems:'center'}}>
                 <Image style={styles.image} source={{uri : data.image}}/>
             </View> 
@@ -89,6 +89,12 @@ const styles = StyleSheet.create({
       flex : 1,  
       marginTop:50,
       marginHorizontal:80
+    },
+    textHeader:{
+        fontFamily: 'NotoSansThai',
+        color:'black',
+        fontSize:18,
+        textAlign:'center',
     },
     text:{
         fontFamily:'NotoSansThai',

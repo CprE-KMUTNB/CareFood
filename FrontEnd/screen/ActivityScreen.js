@@ -50,7 +50,7 @@ const ActivityScreen = ({navigation}) => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>เมนูอาหาร</Text>
+            <Text style={styles.textHeader}>กิจกรรม</Text>
             <View style={styles.search}>
                 <TextInput placeholder='ค้นหากิจกรรม' placeholderTextColor='#FFFFFF' style={styles.textSearch}
                 onChangeText={event=>searchFilterFunction(event)}></TextInput>
@@ -156,6 +156,12 @@ const styles = StyleSheet.create({
       flex : 1,  
       marginTop:50,
       alignItems:'center'
+    },
+    textHeader:{
+        fontFamily: 'NotoSansThai',
+        color:'black',
+        fontSize:18,
+        textAlign:'center',
     },
     text:{
         fontFamily:'NotoSansThai',

@@ -44,7 +44,7 @@ const MenuScreen = ({navigation}) => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>เมนูอาหาร</Text>
+            <Text style={styles.textHeader}>เมนูอาหาร</Text>
             <View style={styles.search}>
                 <TextInput placeholder='ค้นหาเมนู' placeholderTextColor='#FFFFFF' style={styles.textSearch}
                 onChangeText={event=>searchFilterFunction(event)}
@@ -82,6 +82,12 @@ const styles = StyleSheet.create({
       flex : 1,  
       marginTop:50,
       alignItems:'center'
+    },
+    textHeader:{
+        fontFamily: 'NotoSansThai',
+        color:'black',
+        fontSize:18,
+        textAlign:'center',
     },
     text:{
         fontFamily:'NotoSansThai',

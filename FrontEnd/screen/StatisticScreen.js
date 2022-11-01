@@ -18,7 +18,7 @@ const StatisticScreen = () => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>สถิติ</Text>
+            <Text style={styles.textHeader}>สถิติ</Text>
             <View style={[styles.box,{marginTop:60,}]}>
                 <Text style={styles.text}>สัปดาห์</Text>
                 <TouchableOpacity onPress={() => {}} style={{marginLeft:10}}>
@@ -70,6 +70,12 @@ const styles = StyleSheet.create({
     container : {
       flex : 1,  
       marginTop:50,
+    },
+    textHeader:{
+        fontFamily: 'NotoSansThai',
+        color:'black',
+        fontSize:18,
+        textAlign:'center',
     },
     text:{
         fontFamily:'NotoSansThai',

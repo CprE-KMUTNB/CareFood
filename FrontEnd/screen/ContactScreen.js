@@ -10,7 +10,7 @@ const ContactScreen = () => {
 
     return(
         <View style={styles.container}>
-            <Text style={[styles.text, {fontSize:16, textAlign:'center'}]}>ติดต่อ</Text>
+            <Text style={styles.textHeader}>ติดต่อ</Text>
             <View style={{marginTop:50}}>
                 <View style={styles.boxInput}>
                     <View style={{flexDirection:'row',marginTop:35}}>
@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
     container : {
       flex : 1,  
       marginTop:50
+    },
+    textHeader:{
+        fontFamily: 'NotoSansThai',
+        color:'black',
+        fontSize:18,
+        textAlign:'center',
     },
     text:{
         fontFamily:'NotoSansThai',
