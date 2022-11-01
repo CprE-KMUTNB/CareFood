@@ -37,7 +37,7 @@ mongoose.connect(process.env.DATABASE,{
     console.log(err);
 })
 
-const port = process.env.PORT
+const port = process.env.PORT || 8080
 
 app.listen(port,()=>{
     console.log('Start Server Laew in port 5500');
