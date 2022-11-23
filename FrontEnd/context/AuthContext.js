@@ -19,6 +19,7 @@ export const AuthProvider = ({children}) => {
     const [kcal, setKcal] = useState('');
     const [foodInfo, setFoodInfo] = useState([]);
     const [power, setPower] = useState('');
+    const [total, setTotal] = useState('');
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -223,6 +224,19 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const showtotal = (name) => {
+        axios.post(`${baseUrl}/api/caltoday`,{
+            name
+        })
+        .then(res=>{
+            console.log(res.data)
+            setPower(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -252,9 +266,13 @@ export const AuthProvider = ({children}) => {
         showcal(userInfo.name);
     }, [])
 
+    useEffect(() => {
+        showtotal(userInfo.name);
+    }, [])
+
 
     return(
-        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, calpow, savepow, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo, power}}>
+        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, calpow, savepow, showtotal, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo, power, total}}>
             {children}
         </AuthContext.Provider>
     )

@@ -65,7 +65,8 @@ const Menu_1 = () => {
                         <View style={styles.modalView}>
                             <Text style={styles.text}>บันทึกแคลอรีหรือไม่</Text>
                             <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
-                                <Text style={[styles.text,{marginLeft:20}]}>{kcal}</Text>
+                                <Text style={[styles.text]}>{kcal}</Text>
+                                <Text style={[styles.text,{marginLeft:20}]}>kcal</Text>
                             </View>
                             <View style={{alignItems:'center', flexDirection:'row'}}>
                                 <TouchableOpacity onPress={() => {savecal(userInfo.name, data.name, kcal);showcal(userInfo.name);setModalVisible(!modalVisible)}} style={styles.buttonpress}>
