@@ -1,9 +1,11 @@
 const usercalfood = require("../model/usercalfood")
 
 exports.deletesfood = (req,res)=>{
+    
    const time = req.body.time
    const date = req.body.date
    const name = req.body.name
+   
     if(!time){
         return res.status(400)
     }else{
@@ -11,5 +13,4 @@ exports.deletesfood = (req,res)=>{
          res.json({"result":'ลบอาหารสำเร็จ'})
         })
     }
-    console.log(req)
 }

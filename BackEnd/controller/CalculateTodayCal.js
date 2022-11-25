@@ -7,10 +7,8 @@ exports.caltoday = (req,res)=>{
      usercalfood.find({name:name,date:moment().format('DD MM YYYY')}).then(result=>{
         for (let i = 0;i<result.length;i = i+1)
         {
-            
-            answer = answer + parseInt(result[i].cal0)
+             answer = answer + parseFloat(result[i].cal)
         }
         return res.json({result:answer})
      })
-    
 }

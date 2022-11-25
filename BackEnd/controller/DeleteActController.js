@@ -12,5 +12,4 @@ exports.deletesact = (req,res)=>{
             return res.json({"result":"ลบกิจกรรมสำเร็จ"})
         })
     }
-    console.log(req)
 }

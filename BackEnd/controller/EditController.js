@@ -17,7 +17,6 @@ exports.edit = (req,res)=>{
                 gender:req.body.gender,
             }
         }).then(user=>{
-            console.log(user)
             return res.status(200).json(user)
         })
     }

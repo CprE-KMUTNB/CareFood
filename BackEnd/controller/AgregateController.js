@@ -26,7 +26,6 @@ exports.info = (req,res)=>{
                     return res.json(data[0])
                 }
             })
-            console.log(result);
         }
     })
 }
