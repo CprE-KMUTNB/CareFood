@@ -229,8 +229,8 @@ export const AuthProvider = ({children}) => {
             name
         })
         .then(res=>{
-            console.log(res.data)
-            setPower(res.data)
+            console.log(res.data.result)
+            setTotal(res.data.result)
         })
         .catch(err=>{
             console.log(err);
