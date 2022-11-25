@@ -4,7 +4,7 @@ const usercalfood = require("../model/usercalfood")
 
 exports.returndate=async  (req,res)=>{
     const name = req.body.name
-    var dates = moment().subtract(3,'days')
+    var dates = moment().subtract(7,'days')
     var dateser = dates.format('DD MM YYYY')
     var answer = 0
     var ansarrya = [0,0,0,0,0,0,0]
