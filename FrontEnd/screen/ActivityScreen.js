@@ -17,6 +17,8 @@ const ActivityScreen = ({navigation}) => {
     const [minute,setMinute] = useState('')
     const {power} = useContext(AuthContext);
     const {savepow} = useContext(AuthContext);
+    const {showtotal} = useContext(AuthContext);
+    const {showStat} = useContext(AuthContext);
 
     useEffect(() => {
         fetchData('https://randomuser.me/api/?results=20')
@@ -87,7 +89,7 @@ const ActivityScreen = ({navigation}) => {
                             <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
                         </View>
                         <View style={{alignItems:'center', flexDirection:'row'}}>
-                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible);calpow(nameact, mets, minute, userInfo.weight);setAlertVisible(true)}} style={styles.buttonpress}>
+                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible);calpow(nameact, mets, minute, userInfo.weight);showtotal(userInfo.name);showStat(userInfo.name);setAlertVisible(true)}} style={styles.buttonpress}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>

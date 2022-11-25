@@ -4,13 +4,15 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, DefaultTheme} fro
 import Octicons from 'react-native-vector-icons/Octicons';
 
 import { BarChart } from 'react-native-chart-kit';
+import { AuthContext } from '../context/AuthContext';
 
 const StatisticScreen = () => {
+    const {date} = useContext(AuthContext)
     const data = {
-        labels: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์"],
+        labels: date.date,
         datasets: [
           {
-            data: [40, 45, 28, 80, 99, 43]
+            data: date.result
           }
         ]
       };
@@ -20,16 +22,10 @@ const StatisticScreen = () => {
         <View style={styles.container}>
             <Text style={styles.textHeader}>สถิติ</Text>
             <View style={[styles.box,{marginTop:60,}]}>
-                <Text style={styles.text}>สัปดาห์</Text>
-                <TouchableOpacity onPress={() => {}} style={{marginLeft:10}}>
-                    <Octicons name='chevron-down' size={22} color='black'/>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.box}>
                 <Text style={styles.text}>พลังงานสะสมทั้งหมด</Text>
-                <Text style={[styles.text, {marginLeft:20}]}>kcal/</Text>
+                <Text style={[styles.text, {marginLeft:20}]}>kcal/สัปดาห์</Text>
             </View>
-            <View style={styles.chart}>
+            <View style={[styles.chart,{right:20}]}>
                 <BarChart
                 data={data}
                 width={Dimensions.get("window").width}
