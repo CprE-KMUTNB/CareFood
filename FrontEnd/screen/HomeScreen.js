@@ -27,9 +27,9 @@ const App = () => {
         <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
         <Text style={styles.text}>วันนี้ได้รับ</Text>
         <Text style={styles.textKcal}>{total} kcal</Text>
-        <TouchableOpacity onPress={() => {showtotal(userInfo.realname)}}>
+        {/* <TouchableOpacity onPress={() => {showtotal(userInfo.name)}}>
           <Text>d</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <View>
         <Modal
@@ -122,6 +122,7 @@ const App = () => {
     fontFamily: 'NotoSansThai',
     color: '#000000',
     fontSize: 20,
+    paddingTop: 20
   },
   textScroll:{
     fontFamily: 'NotoSansThai',

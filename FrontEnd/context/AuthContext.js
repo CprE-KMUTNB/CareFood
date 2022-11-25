@@ -229,7 +229,7 @@ export const AuthProvider = ({children}) => {
             name
         })
         .then(res=>{
-            console.log(res.data.result)
+            console.log(res.data)
             setTotal(res.data.result)
         })
         .catch(err=>{

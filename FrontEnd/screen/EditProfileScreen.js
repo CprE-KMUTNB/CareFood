@@ -84,7 +84,7 @@ const EditProfileScreen = ({navigation}) => {
                     <Text style={[styles.text, {marginLeft: 20}]}>ก.ก.</Text>
             </View>
             <View style={{alignItems:'center'}}>
-                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight,gender);navigation.navigate('Profile');edit(realname,surname,age,height,weight,gender)}} style={styles.button}>
+                <TouchableOpacity onPress={() => {edit(realname,surname,age,height,weight,gender);navigation.navigate('โปรไฟล์');edit(realname,surname,age,height,weight,gender)}} style={styles.button}>
                             <Text style={[styles.text, {textAlign:'center'}]}>บันทึก</Text>
                 </TouchableOpacity>
             </View>
