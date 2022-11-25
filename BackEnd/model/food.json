@@ -1,4 +1,10 @@
 [{
     "food":[{"name":"กะเพราหมูกรอบ", "kcal":"650", "ingredient":{"one":"ข้าว", "two":"หมูกรอบ", "three":"น้ำมันหอย"}, "image": "https://obs.line-scdn.net/0hs7RN0odzLBhvNzo69dlTT1VhL3dcWz8bCwF9GzNZci9DAm9GVQJrLkw0cX1KAWtGAQNgeUI1NykXDmsdBwFr/w1200"},
-    {"name":"ข้าวผัด", "kcal":"534", "ingredient":{"one":"ข้าว", "two":"หมู", "three":"ไข่"},"image":"https://s359.kapook.com/pagebuilder/6d0bad9e-ccdc-414b-a9b0-fdbabaea1daa.jpg"}]
+    {"name":"ข้าวผัด", "kcal":"534", "ingredient":{"one":"ข้าว", "two":"เนื้อหมู", "three":"ไข่"},"image":"https://s359.kapook.com/pagebuilder/6d0bad9e-ccdc-414b-a9b0-fdbabaea1daa.jpg"},
+    {"name":"แกงกะหรี่ไก่", "kcal":"450", "ingredient":{"one":"ข้าว", "two":"เนื้อไก่", "three":"น้ำตาล"},"image":"https://www.matichonweekly.com/wp-content/uploads/2022/02/%E0%B8%AD%E0%B8%B2%E0%B8%97%E0%B8%B4%E0%B8%95%E0%B8%A2%E0%B9%8C%E0%B8%A5%E0%B8%B0%E0%B8%A1%E0%B8%B7%E0%B9%89%E0%B8%AD-2165.jpg"},
+    {"name":"แกงจืดไข่เจียว", "kcal":"120", "ingredient":{"one":"ข้าว", "two":"เนื้อหมู", "three":"ไข่"},"image":"https://img.wongnai.com/p/1920x0/2018/11/11/1aac7fd384f64db394ca5be29566b168.jpg"},
+    {"name":"ข้าวต้มหมู", "kcal":"160", "ingredient":{"one":"ข้าว", "two":"เนื้อหมู", "three":"ไข่"},"image":"https://s.isanook.com/he/0/ud/0/4045/4.jpg"},
+    {"name":"ข้าวผัดเนื้อ", "kcal":"612", "ingredient":{"one":"ข้าว", "two":"เนื้อหมู", "three":"ไข่"},"image":"https://krua.co/wp-content/uploads/2020/10/RT1596_ImageBannerMobile_960x633_New_.jpg"},
+    {"name":"ข้าวผัดกระเพราหมู", "kcal":"580", "ingredient":{"one":"ข้าว", "two":"เนื้อหมู", "three":"น้ำมันหอย"},"image":"http://img.pptvhd36.com/contents/H/y/cd32a0364b7a.jpg"}
+]
 }]

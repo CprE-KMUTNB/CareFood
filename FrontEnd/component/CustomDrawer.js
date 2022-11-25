@@ -19,9 +19,9 @@ const CustomDrawer = (props) => {
     return(
         <View style={{flex:1, backgroundColor: '#CBA2A2'}}>
             <DrawerContentScrollView {...props}>
-                <ImageBackground style={{padding: 20, marginTop: 60, marginLeft: 30, marginBottom: 20, marginRight: 50, alignItems:'center',}}>
-                    <Profile/>
-                    <Text style={{fontSize: 16, fontFamily: 'NotoSansThai', alignItems: 'center', top: 10, color:'black'}}>{userInfo.realname}</Text>
+                <ImageBackground style={{padding: 20, marginTop: 100, marginLeft: 30, marginBottom: 20, marginRight: 50, alignItems:'center',}}>
+                    
+                    
                 </ImageBackground>
                 <View style={{flex:1, paddingHorizontal: 40}}>
                     <DrawerItemList {...props}/>
@@ -39,13 +39,5 @@ const CustomDrawer = (props) => {
     )
 }
 
-
-const Profile = (props) => {
-    return(
-        <View>
-                <Image source={require('../img/profile.png')} style={{height:60, width:60}}/>
-        </View>
-    )
-}
 
 export default CustomDrawer;

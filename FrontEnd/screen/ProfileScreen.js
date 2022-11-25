@@ -14,11 +14,7 @@ const ProfileScreen = ({navigation}) => {
     return(
         <View style={{flex:1, marginTop:50}}>
             <Text style={styles.textHeader}>โปรไฟล์</Text>
-            <View style={styles.container}>
-                <Image source={require('../img/profile.png')} style={{width:70, height:70, marginTop:20,marginBottom:49}}/>
-  
-            </View>
-            <View style={styles.box}>
+            <View style={[styles.box,{marginTop:70}]}>
                     <Text style={styles.text}>ชื่อจริง</Text>
                     <View style={[styles.textInput,{left:25}]}>
                         <TextInput value={userInfo.realname} editable={false} style={{fontFamily:'NotoSansThai', padding:10, fontSize:16, color:'black'}}></TextInput>

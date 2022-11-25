@@ -17,6 +17,8 @@ const Menu_1 = () => {
     const {savecal} = useContext(AuthContext);
     const {showcal} = useContext(AuthContext);
     const {showtotal} = useContext(AuthContext);
+    const {showStat} = useContext(AuthContext);
+
 
     return(
         <KeyboardAvoidingView 
@@ -65,12 +67,14 @@ const Menu_1 = () => {
                         <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             <Text style={styles.text}>บันทึกแคลอรีหรือไม่</Text>
-                            <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}>
-                                <Text style={[styles.text]}>{kcal}</Text>
+                            <View style={{flexDirection:'row', marginVertical: 20, justifyContent:'center'}}> 
+                                <Text style={[styles.text]}>
+                                    {(first && second && third) === "" ? data.kcal : kcal}
+                                </Text>
                                 <Text style={[styles.text,{marginLeft:20}]}>kcal</Text>
                             </View>
                             <View style={{alignItems:'center', flexDirection:'row'}}>
-                                <TouchableOpacity onPress={() => {savecal(userInfo.name, data.name, kcal);showcal(userInfo.name);showtotal(userInfo.name);setModalVisible(!modalVisible)}} style={styles.buttonpress}>
+                                <TouchableOpacity onPress={() => {{(first && second && third) === "" ? savecal(userInfo.name, data.name, data.kcal) : savecal(userInfo.name, data.name, kcal)};showcal(userInfo.name);showtotal(userInfo.name);showStat(userInfo.name);setModalVisible(!modalVisible)}} style={styles.buttonpress}>
                                             <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>

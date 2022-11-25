@@ -23,9 +23,9 @@ const StatisticScreen = () => {
             <Text style={styles.textHeader}>สถิติ</Text>
             <View style={[styles.box,{marginTop:60,}]}>
                 <Text style={styles.text}>พลังงานสะสมทั้งหมด</Text>
-                <Text style={[styles.text, {marginLeft:20}]}>kcal/สัปดาห์</Text>
+                <Text style={[styles.text, {marginLeft:20}]}>kcal / สัปดาห์</Text>
             </View>
-            <View style={[styles.chart,{right:20}]}>
+            <View style={[styles.chart,{right:15}]}>
                 <BarChart
                 data={data}
                 width={Dimensions.get("window").width}
@@ -36,7 +36,8 @@ const StatisticScreen = () => {
                     height:100000,
                     fillShadowGradient: '#E01A22',
                     fillShadowGradientOpacity: 1,
-                    decimalPlaces: 0, 
+                    decimalPlaces: 0,
+                    barPercentage: 0.7, 
                     color: (opacity = 1) => '#E01A22',
                     labelColor: (opacity = 1) => `rgba(0, 0, 0, 1)`,
         

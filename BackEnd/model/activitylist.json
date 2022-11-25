@@ -1,4 +1,10 @@
 [{
-    "activity":[{"name":"วิ่ง", "kcal":"650", "image": "https://cdn-icons-png.flaticon.com/512/763/763965.png"},
-    {"name":"ว่ายน้ำ", "kcal":"534", "image":"https://cdn-icons-png.flaticon.com/512/72/72967.png"}]
+    "activity":[{"name":"วิ่ง","image": "https://cdn-icons-png.flaticon.com/512/763/763965.png"},
+    {"name":"ว่ายน้ำ", "image":"https://cdn-icons-png.flaticon.com/512/72/72967.png"},
+    {"name":"เดิน", "image":"https://cdn-icons-png.flaticon.com/512/4974/4974395.png"},
+    {"name":"ฟุตบอล", "image":"https://cdn-icons-png.flaticon.com/512/27/27221.png"},
+    {"name":"ต่อยมวย", "image":"https://cdn-icons-png.flaticon.com/512/1653/1653886.png"},
+    {"name":"โยคะ", "image":"https://cdn-icons-png.flaticon.com/512/46/46571.png"},
+    {"name":"แบดมินตัน", "image":"https://cdn-icons-png.flaticon.com/512/10/10566.png"}
+]
 }]

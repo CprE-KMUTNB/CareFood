@@ -12,11 +12,15 @@ const App = () => {
   const [date, setDate] = useState(AuthContext);
   const [time, setTime] = useState(AuthContext);
   const {total} = useContext(AuthContext);
+  const {showtotal} = useContext(AuthContext);
+  const {showStat} = useContext(AuthContext);
 
   useEffect(() => {
     console.log(foodInfo.length)
     showcal(userInfo.name);
-  } , [foodInfo.length])
+    showStat(userInfo.name);
+    showtotal(userInfo.name);
+  } , [total])
 
   return(
     <View style={[styles.container,{flexDirection: 'column'}]}>
