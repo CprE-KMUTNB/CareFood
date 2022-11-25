@@ -41,8 +41,8 @@ const RegisterScreen = ({navigation}) => {
                     </View>
             </View>
             <View style={styles.box}>
-                    <Text style={styles.text}>ชื่อจริง *</Text>
-                    <View style={[styles.textInput,{left:25}]}>
+                    <Text style={styles.text}>ชื่อจริง </Text>
+                    <View style={[styles.textInput,{left:35}]}>
                         <TextInput value={realname} onChangeText={text=>setRealName(text)} 
                         style={{fontFamily:'NotoSansThai', padding:10, fontSize:16}}></TextInput>
                     </View>

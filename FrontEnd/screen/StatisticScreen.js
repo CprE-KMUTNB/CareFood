@@ -22,10 +22,10 @@ const StatisticScreen = () => {
         <View style={styles.container}>
             <Text style={styles.textHeader}>สถิติ</Text>
             <View style={[styles.box,{marginTop:60,}]}>
-                <Text style={styles.text}>พลังงานสะสมทั้งหมด</Text>
-                <Text style={[styles.text, {marginLeft:20}]}>kcal / สัปดาห์</Text>
+                <Text style={styles.text}>พลังงานสะสมย้อนหลัง 1 สัปดาห์</Text>
             </View>
             <View style={[styles.chart,{right:15}]}>
+                <Text style={[styles.tex,{left:30}]}> kcal </Text>
                 <BarChart
                 data={data}
                 width={Dimensions.get("window").width}

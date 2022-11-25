@@ -2689,7 +2689,7 @@
   "resolved" "https://registry.npmjs.org/command-exists/-/command-exists-1.2.9.tgz"
   "version" "1.2.9"
 
-"commander@^2.19.0":
+"commander@^2.19.0", "commander@^2.9.0":
   "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
   "resolved" "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
   "version" "2.20.3"
@@ -6091,6 +6091,13 @@
   "integrity" "sha512-lfb+shYXI2tXlQrNUpNr05/1D/kzFj8Isbfp89DQrpZk0fs2JIAnLHWETR0hQS9zvtzwLWlVv0wKLffbue5HoA=="
   "resolved" "https://registry.npmjs.org/react-moment/-/react-moment-1.1.2.tgz"
   "version" "1.1.2"
+
+"react-native-build@^1.0.7":
+  "integrity" "sha512-Brd4Y4t/x60AkTQY2gIdBjxCsuLgpK9fVlMcHhYYsr8+J6bnEbX1Qywsk51ZUox5Y+Cv2x2bIlM0kmIrRvedXg=="
+  "resolved" "https://registry.npmjs.org/react-native-build/-/react-native-build-1.0.7.tgz"
+  "version" "1.0.7"
+  dependencies:
+    "commander" "^2.9.0"
 
 "react-native-chart-kit@^6.12.0":
   "integrity" "sha512-nZLGyCFzZ7zmX0KjYeeSV1HKuPhl1wOMlTAqa0JhlyW62qV/1ZPXHgT8o9s8mkFaGxdqbspOeuaa6I9jUQDgnA=="
