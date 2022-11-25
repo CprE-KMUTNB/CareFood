@@ -12,7 +12,6 @@ const App = () => {
   const [date, setDate] = useState(AuthContext);
   const [time, setTime] = useState(AuthContext);
   const {total} = useContext(AuthContext);
-  const {showtotal} = useContext(AuthContext);
 
   useEffect(() => {
     console.log(foodInfo.length)
@@ -24,7 +23,7 @@ const App = () => {
       <View style={[styles.box,{flexDirection: 'column'}]}>
         <Image source={require('../img/logo.png')}
           style={styles.image}/>
-        <Text style={styles.textStatus}>คุณได้รับประทานมื้อเช้าแล้ว</Text>
+        <Text style={styles.textStatus}>สวัสดี! คุณ{userInfo.realname}</Text>
         <Text style={styles.text}>วันนี้ได้รับ</Text>
         <Text style={styles.textKcal}>{total} kcal</Text>
         {/* <TouchableOpacity onPress={() => {showtotal(userInfo.name)}}>

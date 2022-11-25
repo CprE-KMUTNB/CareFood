@@ -20,6 +20,7 @@ export const AuthProvider = ({children}) => {
     const [foodInfo, setFoodInfo] = useState([]);
     const [power, setPower] = useState('');
     const [total, setTotal] = useState('');
+    const [date, setDate] = useState('');
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -137,8 +138,7 @@ export const AuthProvider = ({children}) => {
         axios.post(`${baseUrl}/api/deletes`,{
             userToken
         })
-        .then(res=>{
-            
+        .then(res=>{  
             console.log(res)
         })
         .catch(err=>{
@@ -237,6 +237,19 @@ export const AuthProvider = ({children}) => {
         })
     }
 
+    const showStat = (name) => {
+        axios.post(`${baseUrl}/api/returndate`,{
+            name
+        })
+        .then(res=>{
+            console.log(res.data)
+            setDate(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
     const isLoggedIn = async() =>{
         try{
         setIsLoading(true);
@@ -270,9 +283,13 @@ export const AuthProvider = ({children}) => {
         showtotal(userInfo.name);
     }, [])
 
+    useEffect(() => {
+        showStat(userInfo.name);
+    }, [])
+
 
     return(
-        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, calpow, savepow, showtotal, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo, power, total}}>
+        <AuthContext.Provider value={{login, isLoggedIn, logout, register, edit, select, listmenu, listact, deletes, cal, savecal, showcal, delfood, calpow, savepow, showtotal, showStat, isLoading, userToken, userInfo, status, data, menu, activity, kcal, foodInfo, power, total, date}}>
             {children}
         </AuthContext.Provider>
     )
