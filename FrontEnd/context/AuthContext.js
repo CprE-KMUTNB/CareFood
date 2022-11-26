@@ -94,6 +94,10 @@ export const AuthProvider = ({children}) => {
     const logout = () => {
         setIsLoading(true);
         setUserToken(null);
+        setTotal(null);
+        setDate(null);
+        setKcal(null);
+        setPower(null);
         AsyncStorage.removeItem('userToken');
         setIsLoading(false);
     }
@@ -134,7 +138,14 @@ export const AuthProvider = ({children}) => {
     }
 
     const deletes = () => {
+        setIsLoading(true);
         setUserToken(null);
+        setTotal(null);
+        setDate(null);
+        setKcal(null);
+        setPower(null);
+        AsyncStorage.removeItem('userToken');
+        setIsLoading(false);
         axios.post(`${baseUrl}/api/deletes`,{
             userToken
         })
