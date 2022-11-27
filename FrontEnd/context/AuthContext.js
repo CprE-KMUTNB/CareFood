@@ -290,7 +290,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         showcal(userInfo.name);
-    }, [])
+    }, []) 
 
     useEffect(() => {
         showtotal(userInfo.name);
