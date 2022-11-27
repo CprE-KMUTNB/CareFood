@@ -77,7 +77,7 @@ const ActivityScreen = ({navigation}) => {
                         <RNPickerSelect
                             placeholder={{
                                 label: 'เลือกระดับความเข้มข้น',
-                                value: null,
+                                value: '',
                             }}
                             onValueChange={(value) => setMets(value)}
                             items={[
@@ -91,7 +91,7 @@ const ActivityScreen = ({navigation}) => {
                             <Text style={[styles.text,{marginLeft:20}]}>นาที</Text>
                         </View>
                         <View style={{alignItems:'center', flexDirection:'row'}}>
-                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible);calpow(nameact, mets, minute, userInfo.weight);showcal(userInfo.name);showStat(userInfo.name);showtotal(userInfo.name);setAlertVisible(true)}} style={styles.buttonpress}>
+                            <TouchableOpacity onPress={() => {setModalVisible(!modalVisible);calpow(nameact, mets, minute, userInfo.weight);setAlertVisible(true)}} style={styles.buttonpress}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
@@ -120,10 +120,10 @@ const ActivityScreen = ({navigation}) => {
                             <Text style={[styles.text,{marginLeft:20}]}>kcal</Text>
                         </View>
                         <View style={{alignItems:'center', flexDirection:'row'}}>
-                            <TouchableOpacity onPress={() => {setAlertVisible(!alertVisible);savepow(userInfo.name, nameact, power)}} style={styles.buttonpress}>
+                            <TouchableOpacity onPress={() => {setAlertVisible(!alertVisible);savepow(userInfo.name, nameact, power);showcal(userInfo.name);showStat(userInfo.name);showtotal(userInfo.name)}} style={styles.buttonpress}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ตกลง</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setAlertVisible(!alertVisible)} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
+                            <TouchableOpacity onPress={() => {setAlertVisible(!alertVisible);setMinute('')}} style={[styles.buttonpress,{marginLeft:30, backgroundColor:'#E01F54'}]}>
                                 <Text style={[styles.text, {textAlign:'center'}]}>ยกเลิก</Text>
                             </TouchableOpacity>
                         </View>
