@@ -7,7 +7,7 @@ exports.deletes = (req,res)=>{
     if(!userid){
         return res.status(400)
     }else{
-        userinfodb.findByIdAndUpdate(userid.userid).then(result=>{
+        userinfodb.findByIdAndDelete(userid.userid).then(result=>{
             return res.json({"result":'ลบบัญชีสำเร็จ'})
         })
     }
