@@ -1,3 +1,4 @@
 const moment = require('moment')
-var date = moment().subtract(3,'days').format("ddd DD")
+var date = moment().format("H:mm")
 console.log(date);
+
