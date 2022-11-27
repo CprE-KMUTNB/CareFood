@@ -1,12 +1,14 @@
 import React, {createContext, useState, useEffect} from "react";
 import {Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import moment from "moment";
 
 export const AuthContext = createContext();
 
 import axios from "axios";
 
 const baseUrl = "https://carefood007.herokuapp.com"
+// http://10.0.2.2:5500
 
 export const AuthProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +23,7 @@ export const AuthProvider = ({children}) => {
     const [power, setPower] = useState('');
     const [total, setTotal] = useState('');
     const [date, setDate] = useState('');
+    var time = moment().format('H:mm:ss');
 
     const checkTextInput = (error,status) => 
         Alert.alert(
@@ -188,7 +191,6 @@ export const AuthProvider = ({children}) => {
             name
         })
         .then(res=>{
-            
             setFoodInfo(res.data)
         })
         .catch(err=>{

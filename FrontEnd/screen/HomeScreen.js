@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import {View, Text,Image, StyleSheet,ScrollView ,TouchableOpacity, Modal, Alert} from 'react-native'
 import { AuthContext } from "../context/AuthContext";
 
+
 const App = () => {
   const {userInfo} = useContext(AuthContext);
   const {foodInfo} = useContext(AuthContext);
