@@ -14,6 +14,6 @@ exports.saveFoodCal = (req,res)=>{
            name,foodname,cal,time,date
         })
         }
-        return res.json({result:"success"})
+        return res.json({result:"บันทึกสำเร็จ"})
         }
     

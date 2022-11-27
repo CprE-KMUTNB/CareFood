@@ -7,9 +7,9 @@
      const nameact = req.body.nameact
     
     if (!mass) {
-        return res.json({result:"Couldn't find weight"})  
+        return res.json({result:"ไม่พบข้อมูลน้ำหนักของผู้ใช้"})  
     }else if(!minute){
-        return res.json({result:"Please Type Minutes"})
+        return res.json({result:"กรุณาใส่เวลาที่ออกกำลังกาย"})
     }
     else {
     var result = (((Activity[nameact][mets])*3.5*mass)/200)*minute
