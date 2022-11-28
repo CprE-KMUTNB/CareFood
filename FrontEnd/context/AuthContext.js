@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 import axios from "axios";
 
-const baseUrl = "https://carefood007.herokuapp.com"
+const baseUrl = "https://muddy-tan-dress.cyclic.app"
 // http://10.0.2.2:5500
 
 export const AuthProvider = ({children}) => {
@@ -47,9 +47,9 @@ export const AuthProvider = ({children}) => {
             }
             else{
             console.log(res.data.token);
-            console.log(res.data);
+            console.log(res.data.userinfo);
             AsyncStorage.setItem('userToken', res.data.token)
-            AsyncStorage.setItem('userInfo', res.data.userinfo)
+            AsyncStorage.setItem('userInfo', JSON.stringify(res.data.userinfo))
             setUserToken(res.data.token);
             setUserInfo(res.data.userinfo);
             
@@ -87,7 +87,7 @@ export const AuthProvider = ({children}) => {
         ).then(res=>{
             console.log("เเก้ไขสำเร็จ");
             console.log(res.data);
-            AsyncStorage.setItem('userInfo', res.data)
+            AsyncStorage.setItem('userInfo', JSON.stringify(res.data))
             setUserInfo(res.data)
         })
         .catch(err=>{
@@ -104,6 +104,7 @@ export const AuthProvider = ({children}) => {
         setKcal(null);
         setPower(null);
         AsyncStorage.removeItem('userToken');
+        AsyncStorage.removeItem('userInfo');
         setIsLoading(false);
     }
 
@@ -150,6 +151,7 @@ export const AuthProvider = ({children}) => {
         setKcal(null);
         setPower(null);
         AsyncStorage.removeItem('userToken');
+        AsyncStorage.removeItem('userInfo');
         setIsLoading(false);
         axios.post(`${baseUrl}/api/deletes`,{
             userToken
@@ -269,7 +271,10 @@ export const AuthProvider = ({children}) => {
         try{
         setIsLoading(true);
         let userToken = await AsyncStorage.getItem('userToken');
+        let userInfo = await AsyncStorage.getItem('userInfo');
+        userInfo = JSON.parse(userInfo)
         setUserToken(userToken);
+        setUserInfo(userInfo);
         setIsLoading(false);
         }
         catch(e){
@@ -279,7 +284,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         isLoggedIn();
-
+        console.log(userInfo)
     }, [])
 
     useEffect(() => {
