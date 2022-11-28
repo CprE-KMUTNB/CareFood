@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 import axios from "axios";
 
-const baseUrl = "https://muddy-tan-dress.cyclic.app"
+const baseUrl = "https://erin-better-woodpecker.cyclic.app"
 // http://10.0.2.2:5500
 
 export const AuthProvider = ({children}) => {
