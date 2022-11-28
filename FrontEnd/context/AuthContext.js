@@ -49,6 +49,7 @@ export const AuthProvider = ({children}) => {
             console.log(res.data.token);
             console.log(res.data);
             AsyncStorage.setItem('userToken', res.data.token)
+            AsyncStorage.setItem('userInfo', res.data.userinfo)
             setUserToken(res.data.token);
             setUserInfo(res.data.userinfo);
             
@@ -86,6 +87,7 @@ export const AuthProvider = ({children}) => {
         ).then(res=>{
             console.log("เเก้ไขสำเร็จ");
             console.log(res.data);
+            AsyncStorage.setItem('userInfo', res.data)
             setUserInfo(res.data)
         })
         .catch(err=>{
